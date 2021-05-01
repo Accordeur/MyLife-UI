@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/menu">
+        <file alias="save">resource/save.png</file>
+        <file alias="zoom_in">resource/zoom_in.png</file>
+        <file alias="zoom_out">resource/zoom_out.png</file>
+        <file alias="delete">resource/delete.png</file>
+        <file alias="new">resource/new.png</file>
+        <file alias="new_floder">resource/new_folder.png</file>
+        <file alias="new_project">resource/new_project.png</file>
+        <file alias="new_sub">resource/new_sub.png</file>
+        <file alias="options">resource/options.png</file>
+    </qresource>
+</RCC>
