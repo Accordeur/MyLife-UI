@@ -10,4 +10,7 @@
         <file alias="new_sub">resource/new_sub.png</file>
         <file alias="options">resource/options.png</file>
     </qresource>
+    <qresource prefix="/logo">
+        <file alias="fox">resource/fox.png</file>
+    </qresource>
 </RCC>

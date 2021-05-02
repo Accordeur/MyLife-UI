@@ -10,13 +10,16 @@ CONFIG += c++11
 
 SOURCES += \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    new_file/newfile.cpp
 
 HEADERS += \
-    mainwindow.h
+    mainwindow.h \
+    new_file/newfile.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    new_file/newfile.ui
 
 TRANSLATIONS += \
     MyLife-UI_en_US.ts
