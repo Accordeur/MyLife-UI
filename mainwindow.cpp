@@ -1,27 +1,23 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "new_file/newfile.h"
+#include "about.h"
 #include <QToolBar>
 #include <QToolButton>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::MainWindow),
-      dialog(new NewFile(this))
+      new_file_dialog(new NewFile(this)),
+      about_dialog(new About(this))
 {
     ui->setupUi(this);
     setupToolbar();
-    QObject::connect(ui->action_New, SIGNAL(triggered(bool)), this, SLOT(new_file()));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-
-void MainWindow::new_file() {
-     dialog->show();
 }
 
 void MainWindow::setupToolbar() {
@@ -31,4 +27,24 @@ void MainWindow::setupToolbar() {
     bar->addAction(ui->action_New_task);
     bar->addAction(ui->action_New_subtask);
     this->addToolBar(bar);
+}
+
+void MainWindow::on_action_About_Qt_triggered()
+{
+    QApplication::aboutQt();
+}
+
+void MainWindow::on_action_New_triggered()
+{
+    new_file_dialog->show();
+}
+
+void MainWindow::on_action_Exit_triggered()
+{
+    QApplication::exit();
+}
+
+void MainWindow::on_action_About_triggered()
+{
+    about_dialog->show();
 }

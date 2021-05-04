@@ -154,7 +154,7 @@
     <addaction name="action_Check_for_updates"/>
     <addaction name="separator"/>
     <addaction name="action_About"/>
-    <addaction name="actionAbout_Qt"/>
+    <addaction name="action_About_Qt"/>
    </widget>
    <widget class="QMenu" name="menu_View">
     <property name="title">
@@ -993,7 +993,7 @@
     <string>&amp;About...</string>
    </property>
   </action>
-  <action name="actionAbout_Qt">
+  <action name="action_About_Qt">
    <property name="text">
     <string>About &amp;Qt</string>
    </property>

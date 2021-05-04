@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 class NewFile;
+class About;
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -15,11 +16,16 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-public slots:
-    void new_file();
+private slots:
+    void on_action_About_Qt_triggered();
+    void on_action_New_triggered();
+    void on_action_Exit_triggered();
+    void on_action_About_triggered();
+
 private:
     void setupToolbar();
     Ui::MainWindow *ui;
-    NewFile* dialog;
+    NewFile* new_file_dialog;
+    About* about_dialog;
 };
 #endif // MAINWINDOW_H
