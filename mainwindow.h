@@ -18,6 +18,7 @@ public:
 public slots:
     void new_file();
 private:
+    void setupToolbar();
     Ui::MainWindow *ui;
     NewFile* dialog;
 };

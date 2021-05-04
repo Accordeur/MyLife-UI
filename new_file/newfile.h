@@ -3,6 +3,7 @@
 
 #include <QDialog>
 
+class QMenu;
 namespace Ui {
 class NewFile;
 }
@@ -16,7 +17,12 @@ public:
     ~NewFile();
 
 private:
+    void setupNewFileMenu();
+    void setupSelectTemplateMenu();
+
     Ui::NewFile *ui;
+    QMenu* menu_select_template;
+    QMenu* menu_new_file;
 };
 
 #endif // NEWFILE_H

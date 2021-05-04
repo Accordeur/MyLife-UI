@@ -114,7 +114,8 @@
      <addaction name="separator"/>
      <addaction name="action_Outlook"/>
      <addaction name="separator"/>
-     <addaction name="action_Advanced_2"/>
+     <addaction name="action_Advanced"/>
+     <addaction name="separator"/>
     </widget>
     <addaction name="menu_Configuration"/>
    </widget>
@@ -923,7 +924,7 @@
     <string>&amp;Outlook...</string>
    </property>
   </action>
-  <action name="action_Advanced_2">
+  <action name="action_Advanced">
    <property name="text">
     <string>&amp;Advanced...</string>
    </property>

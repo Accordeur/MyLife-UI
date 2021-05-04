@@ -43,20 +43,17 @@
    <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
-   <property name="spacing">
-    <number>10</number>
-   </property>
    <property name="leftMargin">
-    <number>30</number>
+    <number>20</number>
    </property>
    <property name="topMargin">
-    <number>30</number>
+    <number>20</number>
    </property>
    <property name="rightMargin">
-    <number>30</number>
+    <number>20</number>
    </property>
    <property name="bottomMargin">
-    <number>0</number>
+    <number>5</number>
    </property>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -83,20 +80,20 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_chice">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
      <property name="spacing">
-      <number>30</number>
+      <number>20</number>
      </property>
      <property name="topMargin">
       <number>30</number>
      </property>
      <property name="bottomMargin">
-      <number>70</number>
+      <number>80</number>
      </property>
      <item>
-      <widget class="QComboBox" name="comboBox_template">
+      <widget class="QToolButton" name="toolButton_Select_templates">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
@@ -104,57 +101,37 @@
        <property name="minimumSize">
         <size>
          <width>0</width>
-         <height>35</height>
+         <height>30</height>
         </size>
        </property>
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-         <kerning>true</kerning>
-        </font>
-       </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(244, 244, 244);</string>
+        <string notr="true"> QToolButton { /* all types of tool button */
+     border: 1px solid #CCCCCC;
+     border-radius: 6px;
+     background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                       stop: 0 #f6f7fa, stop: 1 #dadbde);
+ }
+</string>
        </property>
-       <item>
-        <property name="text">
-         <string>From Template: GTD, Franklin Covey. etc</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Traditional FranklinCovey</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Getting Things Done - Beginners Action</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Getting Things Done - Zones of Focus</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Getting Things Done - Zones of Focusd Action</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Getting Things Done with FranklinCovey Roles</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>FlyLady - Control Journal</string>
-        </property>
-       </item>
+       <property name="text">
+        <string>From Template: GTD, Franklin Covey. etc</string>
+       </property>
+       <property name="popupMode">
+        <enum>QToolButton::InstantPopup</enum>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextOnly</enum>
+       </property>
+       <property name="autoRaise">
+        <bool>false</bool>
+       </property>
+       <property name="arrowType">
+        <enum>Qt::NoArrow</enum>
+       </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="button_new">
+      <widget class="QToolButton" name="toolButton_New_file">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
          <horstretch>0</horstretch>
@@ -163,14 +140,14 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>0</width>
-         <height>35</height>
+         <width>150</width>
+         <height>30</height>
         </size>
        </property>
-       <property name="baseSize">
+       <property name="maximumSize">
         <size>
-         <width>0</width>
-         <height>0</height>
+         <width>150</width>
+         <height>30</height>
         </size>
        </property>
        <property name="font">
@@ -178,14 +155,34 @@
          <pointsize>10</pointsize>
          <weight>75</weight>
          <bold>true</bold>
-         <kerning>false</kerning>
+         <kerning>true</kerning>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true"/>
+        <string notr="true"> QToolButton { /* all types of tool button */
+	 color: rgb(255, 255, 255);
+     border: 1px solid #CCCCCC;
+     border-radius: 6px;
+     background-color: #3e8ef6;
+ }
+
+ QToolButton::menu-button {
+	background-color: rgb(62, 142, 246);
+     border: 1px solid #CCCCCC;
+     border-top-right-radius: 6px;
+     border-bottom-right-radius: 6px;
+     /* 16px width + 4px for border = 20px allocated above */
+     width: 24px;
+ }</string>
        </property>
        <property name="text">
-        <string>New Blank File</string>
+        <string>New Blank File   </string>
+       </property>
+       <property name="popupMode">
+        <enum>QToolButton::MenuButtonPopup</enum>
+       </property>
+       <property name="toolButtonStyle">
+        <enum>Qt::ToolButtonTextOnly</enum>
        </property>
       </widget>
      </item>
@@ -202,6 +199,61 @@
     </widget>
    </item>
   </layout>
+  <action name="action_Create_blank_data_file">
+   <property name="text">
+    <string>Create blank data file</string>
+   </property>
+  </action>
+  <action name="action_Create_blank_data_file_with_default">
+   <property name="text">
+    <string>Create blank data file with default contexts,flags etc</string>
+   </property>
+  </action>
+  <action name="action_Traditional_FranklinCovey">
+   <property name="text">
+    <string>Traditional FranklinCovey</string>
+   </property>
+  </action>
+  <action name="action_Getting_Things_Done_Beginners_Action">
+   <property name="text">
+    <string>Getting Things Done - Beginners Action</string>
+   </property>
+  </action>
+  <action name="action_Getting_Things_Done_Zones_of_Focus">
+   <property name="text">
+    <string>Getting Things Done - Zones of Focus</string>
+   </property>
+  </action>
+  <action name="action_Getting_Things_Done_Zones_of_Focusd_Action">
+   <property name="text">
+    <string>Getting Things Done - Zones of Focusd Action</string>
+   </property>
+  </action>
+  <action name="action_Getting_Things_Done_with_FranklinCovey_Roles">
+   <property name="text">
+    <string>Getting Things Done with FranklinCovey Roles</string>
+   </property>
+  </action>
+  <action name="action_FlyLady_Control_Journal">
+   <property name="text">
+    <string>FlyLady - Control Journal</string>
+   </property>
+  </action>
+  <action name="action_MyLife_Demo_File">
+   <property name="text">
+    <string>MyLife-Demo File</string>
+   </property>
+  </action>
+  <action name="action_More_Templates">
+   <property name="text">
+    <string>More Templates...</string>
+   </property>
+  </action>
+  <action name="action_Do_It_Tomorrow">
+   <property name="text">
+    <string>Do It Tomorrow</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
