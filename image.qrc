@@ -9,6 +9,8 @@
         <file alias="new_project">resource/new_project.png</file>
         <file alias="new_sub">resource/new_sub.png</file>
         <file alias="options">resource/options.png</file>
+        <file alias="left_arrow">resource/left_arrow.png</file>
+        <file alias="right_arrow">resource/right_arrow.png</file>
     </qresource>
     <qresource prefix="/logo">
         <file alias="fox">resource/fox.png</file>

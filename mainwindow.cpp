@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "new_file/newfile.h"
+#include "central_widget/centralwidget.h"
 #include "about.h"
 #include <QToolBar>
 #include <QToolButton>
@@ -9,9 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::MainWindow),
       new_file_dialog(new NewFile(this)),
-      about_dialog(new About(this))
+      about_dialog(new About(this)),
+      central_widget(new CentralWidget(this))
 {
     ui->setupUi(this);
+    setCentralWidget(central_widget);
     setupToolbar();
 }
 

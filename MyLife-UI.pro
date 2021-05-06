@@ -10,17 +10,24 @@ CONFIG += c++11
 
 SOURCES += \
     about.cpp \
+    central_widget/centraldelegate.cpp \
+    central_widget/centralmodel.cpp \
+    central_widget/centralwidget.cpp \
     main.cpp \
     mainwindow.cpp \
     new_file/newfile.cpp
 
 HEADERS += \
     about.h \
+    central_widget/centraldelegate.h \
+    central_widget/centralmodel.h \
+    central_widget/centralwidget.h \
     mainwindow.h \
     new_file/newfile.h
 
 FORMS += \
     about.ui \
+    central_widget/centralwidget.ui \
     mainwindow.ui \
     new_file/newfile.ui
 
