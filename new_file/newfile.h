@@ -4,6 +4,8 @@
 #include <QDialog>
 
 class QMenu;
+class QEvent;
+
 namespace Ui {
 class NewFile;
 }
@@ -15,6 +17,7 @@ class NewFile : public QDialog
 public:
     explicit NewFile(QWidget *parent = nullptr);
     ~NewFile();
+
 
 private:
     void setupNewFileMenu();

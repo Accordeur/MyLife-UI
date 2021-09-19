@@ -1,16 +1,16 @@
 <RCC>
     <qresource prefix="/menu">
-        <file alias="save">resource/save.png</file>
-        <file alias="zoom_in">resource/zoom_in.png</file>
-        <file alias="zoom_out">resource/zoom_out.png</file>
-        <file alias="delete">resource/delete.png</file>
-        <file alias="new">resource/new.png</file>
-        <file alias="new_floder">resource/new_folder.png</file>
-        <file alias="new_project">resource/new_project.png</file>
-        <file alias="new_sub">resource/new_sub.png</file>
-        <file alias="options">resource/options.png</file>
-        <file alias="left_arrow">resource/left_arrow.png</file>
-        <file alias="right_arrow">resource/right_arrow.png</file>
+        <file alias="left_arrow">resource/left_arrow.svg</file>
+        <file alias="right_arrow">resource/right_arrow.svg</file>
+        <file alias="save">resource/save.svg</file>
+        <file alias="zoom_in">resource/zoom_in.svg</file>
+        <file alias="zoom_out">resource/zoom_out.svg</file>
+        <file alias="delete">resource/delete.svg</file>
+        <file alias="new_folder">resource/new_folder.svg</file>
+        <file alias="new_project">resource/new_project.svg</file>
+        <file alias="options">resource/options.svg</file>
+        <file alias="new">resource/new.svg</file>
+        <file alias="new_sub">resource/new_sub.svg</file>
     </qresource>
     <qresource prefix="/logo">
         <file alias="fox">resource/fox.png</file>

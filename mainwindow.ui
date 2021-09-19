@@ -20,7 +20,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>23</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_File">
@@ -801,7 +801,7 @@
   <action name="action_New_folder">
    <property name="icon">
     <iconset resource="image.qrc">
-     <normaloff>:/menu/new_floder</normaloff>:/menu/new_floder</iconset>
+     <normaloff>:/menu/new_folder</normaloff>:/menu/new_folder</iconset>
    </property>
    <property name="text">
     <string>Ne&amp;w folder</string>

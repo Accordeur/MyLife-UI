@@ -2,6 +2,8 @@
 #include "ui_newfile.h"
 #include <QListView>
 #include <QMenu>
+#include <QEvent>
+#include <QDebug>
 
 NewFile::NewFile(QWidget *parent) :
     QDialog(parent),
@@ -38,3 +40,4 @@ void NewFile::setupSelectTemplateMenu() {
     menu_select_template->addAction(ui->action_More_Templates);
     ui->toolButton_Select_templates->setMenu(menu_select_template);
 }
+
