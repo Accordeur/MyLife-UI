@@ -2,9 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-class NewFile;
-class About;
-class CentralWidget;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,8 +24,5 @@ private slots:
 private:
     void setupToolbar();
     Ui::MainWindow *ui;
-    NewFile* new_file_dialog;
-    About* about_dialog;
-    CentralWidget* central_widget;
 };
 #endif // MAINWINDOW_H

@@ -13,6 +13,6 @@
         <file alias="new_sub">resource/new_sub.svg</file>
     </qresource>
     <qresource prefix="/logo">
-        <file alias="fox">resource/fox.png</file>
+        <file alias="fox">resource/fox.svg</file>
     </qresource>
 </RCC>

@@ -1,20 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "new_file/newfile.h"
-#include "central_widget/centralwidget.h"
-#include "about.h"
+#include "new_file/newfile_dialog.h"
+#include "about_dialog.h"
 #include <QToolBar>
 #include <QToolButton>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
-      ui(new Ui::MainWindow),
-      new_file_dialog(new NewFile(this)),
-      about_dialog(new About(this)),
-      central_widget(new CentralWidget(this))
+      ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setCentralWidget(central_widget);
     setupToolbar();
 }
 
@@ -30,6 +25,7 @@ void MainWindow::setupToolbar() {
     bar->addAction(ui->action_New_task);
     bar->addAction(ui->action_New_subtask);
     this->addToolBar(bar);
+    setWindowIcon(QIcon(":/logo/fox"));
 }
 
 void MainWindow::on_action_About_Qt_triggered()
@@ -39,7 +35,7 @@ void MainWindow::on_action_About_Qt_triggered()
 
 void MainWindow::on_action_New_triggered()
 {
-    new_file_dialog->show();
+    NewFileDialog().exec();
 }
 
 void MainWindow::on_action_Exit_triggered()
@@ -49,5 +45,5 @@ void MainWindow::on_action_Exit_triggered()
 
 void MainWindow::on_action_About_triggered()
 {
-    about_dialog->show();
+    AboutDialog().exec();
 }

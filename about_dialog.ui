@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AboutDialog</class>
+ <widget class="QDialog" name="AboutDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>410</width>
+    <height>190</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>410</width>
+    <height>190</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>410</width>
+    <height>190</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>About MyLife</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+	background-color: rgb(255, 255, 255);
+}</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <property name="bottomMargin">
+    <number>5</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_Logo">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">image: url(:/logo/fox);</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="leftMargin">
+        <number>50</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="label_MyLife">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>MyLife              Professional Edition</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_Version">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Version:            5.1.1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_User">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Registered to: All Users</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_Email">
+         <property name="font">
+          <font>
+           <family>Microsoft YaHei UI</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>e-mail: God@life.me</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>52</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="website_ULR">
+       <property name="font">
+        <font>
+         <family>Microsoft YaHei UI</family>
+         <pointsize>8</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p style = &quot;margin:1px&quot;&gt;&lt;a href=&quot;https://www.mylife.net&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0f4bab;&quot;&gt;https://www.mylife.net&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p style = &quot;margin:1px&quot;&gt;© 2021 MyLife.net. All rights reserved&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Close">
+       <property name="text">
+        <string>Close</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>pushButton_Close</sender>
+   <signal>clicked()</signal>
+   <receiver>AboutDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>357</x>
+     <y>201</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>382</x>
+     <y>278</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

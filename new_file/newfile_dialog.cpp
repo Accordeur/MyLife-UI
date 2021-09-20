@@ -1,13 +1,13 @@
-#include "newfile.h"
-#include "ui_newfile.h"
+#include "newfile_dialog.h"
+#include "ui_newfile_dialog.h"
 #include <QListView>
 #include <QMenu>
 #include <QEvent>
 #include <QDebug>
 
-NewFile::NewFile(QWidget *parent) :
+NewFileDialog::NewFileDialog(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::NewFile), menu_select_template(new QMenu(this)), menu_new_file(new QMenu(this))
+    ui(new Ui::NewFileDialog), menu_select_template(new QMenu(this)), menu_new_file(new QMenu(this))
 {
     ui->setupUi(this);
     setWindowFlags(windowFlags()&~Qt::WindowContextHelpButtonHint);
@@ -15,18 +15,18 @@ NewFile::NewFile(QWidget *parent) :
     setupNewFileMenu();
 }
 
-NewFile::~NewFile()
+NewFileDialog::~NewFileDialog()
 {
     delete ui;
 }
 
 
-void NewFile::setupNewFileMenu() {
+void NewFileDialog::setupNewFileMenu() {
     menu_new_file->addAction(ui->action_Create_blank_data_file);
     menu_new_file->addAction(ui->action_Create_blank_data_file_with_default);
     ui->toolButton_New_file->setMenu(menu_new_file);
 }
-void NewFile::setupSelectTemplateMenu() {
+void NewFileDialog::setupSelectTemplateMenu() {
     menu_select_template->addAction(ui->action_Traditional_FranklinCovey);
     menu_select_template->addAction(ui->action_Do_It_Tomorrow);
     menu_select_template->addAction(ui->action_Getting_Things_Done_Beginners_Action);

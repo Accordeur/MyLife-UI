@@ -9,27 +9,20 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    about.cpp \
-    central_widget/centraldelegate.cpp \
-    central_widget/centralmodel.cpp \
-    central_widget/centralwidget.cpp \
+    about_dialog.cpp \
     main.cpp \
     mainwindow.cpp \
-    new_file/newfile.cpp
+    new_file/newfile_dialog.cpp
 
 HEADERS += \
-    about.h \
-    central_widget/centraldelegate.h \
-    central_widget/centralmodel.h \
-    central_widget/centralwidget.h \
+    about_dialog.h \
     mainwindow.h \
-    new_file/newfile.h
+    new_file/newfile_dialog.h
 
 FORMS += \
-    about.ui \
-    central_widget/centralwidget.ui \
+    about_dialog.ui \
     mainwindow.ui \
-    new_file/newfile.ui
+    new_file/newfile_dialog.ui
 
 TRANSLATIONS += \
     MyLife-UI_en_US.ts
