@@ -2,7 +2,7 @@
 #include "ui_newfile_dialog.h"
 #include <QListView>
 #include <QMenu>
-#include <QEvent>
+#include <QFileDialog>
 #include <QDebug>
 
 NewFileDialog::NewFileDialog(QWidget *parent) :
@@ -39,5 +39,19 @@ void NewFileDialog::setupSelectTemplateMenu() {
     menu_select_template->addSeparator();
     menu_select_template->addAction(ui->action_More_Templates);
     ui->toolButton_Select_templates->setMenu(menu_select_template);
+}
+
+
+void NewFileDialog::on_action_More_Templates_triggered()
+{
+    QString fileName = QFileDialog::getOpenFileName(nullptr,
+                                                    QString(),
+                                                    QString(),
+                                                    tr("MyLife Template(*.mlt)"));
+
+    if(!fileName.isEmpty()) {
+        emit selected_template_path(fileName);
+        close();
+    }
 }
 

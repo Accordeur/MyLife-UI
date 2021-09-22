@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>MyLife</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../image.qrc">
+    <normaloff>:/logo/fox</normaloff>:/logo/fox</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -271,7 +275,7 @@
   </action>
   <action name="action_Save">
    <property name="icon">
-    <iconset resource="image.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/menu/save</normaloff>:/menu/save</iconset>
    </property>
    <property name="text">
@@ -462,7 +466,7 @@
   </action>
   <action name="action_Zoom_in">
    <property name="icon">
-    <iconset resource="image.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/menu/zoom_in</normaloff>:/menu/zoom_in</iconset>
    </property>
    <property name="text">
@@ -474,7 +478,7 @@
   </action>
   <action name="action_Zoom_out">
    <property name="icon">
-    <iconset resource="image.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/menu/zoom_out</normaloff>:/menu/zoom_out</iconset>
    </property>
    <property name="text">
@@ -776,7 +780,7 @@
   </action>
   <action name="action_New_task">
    <property name="icon">
-    <iconset resource="image.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/menu/new</normaloff>:/menu/new</iconset>
    </property>
    <property name="text">
@@ -788,7 +792,7 @@
   </action>
   <action name="action_New_subtask">
    <property name="icon">
-    <iconset resource="image.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/menu/new_sub</normaloff>:/menu/new_sub</iconset>
    </property>
    <property name="text">
@@ -800,7 +804,7 @@
   </action>
   <action name="action_New_folder">
    <property name="icon">
-    <iconset resource="image.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/menu/new_folder</normaloff>:/menu/new_folder</iconset>
    </property>
    <property name="text">
@@ -812,7 +816,7 @@
   </action>
   <action name="action_New_project">
    <property name="icon">
-    <iconset resource="image.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/menu/new_project</normaloff>:/menu/new_project</iconset>
    </property>
    <property name="text">
@@ -849,7 +853,7 @@
   </action>
   <action name="action_Delete_task">
    <property name="icon">
-    <iconset resource="image.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/menu/delete</normaloff>:/menu/delete</iconset>
    </property>
    <property name="text">
@@ -951,7 +955,7 @@
   </action>
   <action name="action_Options">
    <property name="icon">
-    <iconset resource="image.qrc">
+    <iconset resource="../image.qrc">
      <normaloff>:/menu/options</normaloff>:/menu/options</iconset>
    </property>
    <property name="text">
@@ -1015,7 +1019,7 @@
   </action>
  </widget>
  <resources>
-  <include location="image.qrc"/>
+  <include location="../image.qrc"/>
  </resources>
  <connections/>
 </ui>

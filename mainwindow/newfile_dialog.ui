@@ -36,6 +36,10 @@
   <property name="windowTitle">
    <string>Welcome to MyLife. Create New File.</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../image.qrc">
+    <normaloff>:/logo/fox</normaloff>:/logo/fox</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QDialog {
 	background-color: rgb(255, 255, 255);
@@ -144,12 +148,12 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">QToolButton {
+          <string notr="true">.QToolButton {
     border: 1px solid #d8d8d8;
     border-radius: 2px;
     background-color: #f4f4f4;
 }
-QToolButton::menu-indicator {
+.QToolButton::menu-indicator {
     /*image: url(menu_indicator.png);*/
     subcontrol-origin: padding;
     subcontrol-position: right;
@@ -205,14 +209,14 @@ QToolButton::menu-indicator {
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true"> QToolButton { /* all types of tool button */
+          <string notr="true">.QToolButton { /* all types of tool button */
 	 color: rgb(255, 255, 255);
      border: 1px solid #CCCCCC;
      border-radius: 2px;
      background-color: #3e8ef6;
  }
 
- QToolButton::menu-button {
+.QToolButton::menu-button {
 	background-color: rgb(62, 142, 246);
      border: 1px solid #CCCCCC;
      border-top-right-radius: 2px;
@@ -315,6 +319,8 @@ QToolButton::menu-indicator {
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="../image.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -31,10 +31,15 @@
   <property name="windowTitle">
    <string>About MyLife</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../image.qrc">
+    <normaloff>:/logo/fox</normaloff>:/logo/fox</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QDialog {
 	background-color: rgb(255, 255, 255);
-}</string>
+}
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <property name="bottomMargin">
@@ -55,6 +60,11 @@
          <width>75</width>
          <height>75</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <stylestrategy>PreferDefault</stylestrategy>
+        </font>
        </property>
        <property name="styleSheet">
         <string notr="true">image: url(:/logo/fox);</string>
@@ -141,7 +151,7 @@
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
      <item>
-      <widget class="QLabel" name="website_ULR">
+      <widget class="QLabel" name="label_ULR">
        <property name="font">
         <font>
          <family>Microsoft YaHei UI</family>
@@ -177,7 +187,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../image.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton_Close</sender>

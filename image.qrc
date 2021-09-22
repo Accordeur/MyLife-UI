@@ -1,7 +1,5 @@
 <RCC>
     <qresource prefix="/menu">
-        <file alias="left_arrow">resource/left_arrow.svg</file>
-        <file alias="right_arrow">resource/right_arrow.svg</file>
         <file alias="save">resource/save.svg</file>
         <file alias="zoom_in">resource/zoom_in.svg</file>
         <file alias="zoom_out">resource/zoom_out.svg</file>
@@ -11,6 +9,11 @@
         <file alias="options">resource/options.svg</file>
         <file alias="new">resource/new.svg</file>
         <file alias="new_sub">resource/new_sub.svg</file>
+        <file alias="sync">resource/sync.svg</file>
+        <file alias="arrow_left">resource/arrow_left.svg</file>
+        <file alias="arrow_right">resource/arrow_right.svg</file>
+        <file alias="close">resource/close.svg</file>
+        <file alias="close_hover">resource/close_hover.svg</file>
     </qresource>
     <qresource prefix="/logo">
         <file alias="fox">resource/fox.svg</file>

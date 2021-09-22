@@ -17,7 +17,11 @@ class NewFileDialog : public QDialog
 public:
     explicit NewFileDialog(QWidget *parent = nullptr);
     ~NewFileDialog();
+signals:
+    void selected_template_path(QString path);
 
+private slots:
+    void on_action_More_Templates_triggered();
 
 private:
     void setupNewFileMenu();
