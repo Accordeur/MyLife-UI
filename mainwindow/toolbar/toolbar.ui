@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>942</width>
+    <width>1231</width>
     <height>100</height>
    </rect>
   </property>
@@ -32,7 +32,17 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true"/>
+   <string notr="true">QPushButton {
+	border: 0px;
+}
+
+QPushButton:focus:pressed { 
+    background-color: #D4D4D4;
+}
+
+QPushButton:hover {
+     background-color: #F2F2F2;
+}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -69,7 +79,9 @@
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">QWidget {
+        <string notr="true">.QWidget {
+	margin: 0px;
+	border: 0px;
 	background-color: #D4D4D4;
 }
 
@@ -146,17 +158,9 @@ QTabBar::close-button:hover {
 	padding-right: 5px; 
 	margin-top: 5px;
 	margin-bottom: 5px;
-	border:0px;
 	image: url(:/menu/sync);
 }
-
-QPushButton:focus:pressed { 
-    background-color: #D4D4D4;
-}
-
-QPushButton:hover {
-     background-color: #F2F2F2;
- }</string>
+</string>
          </property>
          <property name="text">
           <string/>
@@ -180,17 +184,9 @@ QPushButton:hover {
 	padding-right: 5px; 
 	margin-top: 5px;
 	margin-bottom: 5px;
-	border:0px;
 	image: url(:/menu/options);
 }
-
-QPushButton:focus:pressed { 
-    background-color: #D4D4D4;
-}
-
-QPushButton:hover {
-     background-color: #F2F2F2;
- }</string>
+</string>
          </property>
          <property name="text">
           <string/>
@@ -245,33 +241,48 @@ QPushButton:hover {
       <number>5</number>
      </property>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="pushButton_previous">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	image: url(:/menu/arrow_left);
+	padding-top: 3px;
+	padding-bottom: 3px;
+}</string>
+       </property>
        <property name="text">
-        <string>PushButton</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="pushButton_next">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+	image: url(:/menu/arrow_right);
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+</string>
+       </property>
        <property name="text">
-        <string>PushButton</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit_2">
+      <widget class="QLineEdit" name="lineEdit_path">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -280,7 +291,9 @@ QPushButton:hover {
        </property>
        <property name="styleSheet">
         <string notr="true">.QLineEdit {
+	background-color: #F3F3F2;
 	border: 0px;
+	margin: 0px;
 }</string>
        </property>
       </widget>
@@ -293,47 +306,524 @@ QPushButton:hover {
       <number>0</number>
      </property>
      <item>
-      <widget class="QToolButton" name="toolButton">
+      <widget class="QToolButton" name="toolButton_New_Task">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>28</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QToolButton { /* all types of tool button */
+	 color: rgb(255, 255, 255);
+     border: 1px solid #CCCCCC;
+     border-radius: 2px;
+     background-color: #3e8ef6;
+ }
+.QToolButton:hover { 
+     background-color: #5b9df5;
+ }
+.QToolButton::menu-button {
+	background-color: rgb(62, 142, 246);
+     border: 1px solid #CCCCCC;
+     border-top-right-radius: 2px;
+     border-bottom-right-radius: 2px;
+     /* 16px width + 4px for border = 20px allocated above */
+     width: 22px;
+ }
+.QToolButton::menu-button:hover { 
+     background-color: #5b9df5;
+ }</string>
+       </property>
+       <property name="text">
+        <string>New task    </string>
+       </property>
+       <property name="popupMode">
+        <enum>QToolButton::MenuButtonPopup</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_New_Subtask">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 3px;
+	margin-right: 5px;
+	padding: 5px;
+	image: url(:/menu/new_sub);
+}</string>
+       </property>
        <property name="text">
-        <string>...</string>
+        <string/>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
+      <widget class="Line" name="line">
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
        </property>
-       <property name="text">
-        <string>PushButton</string>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_4">
+      <widget class="QPushButton" name="pushButton_Task_Show_Model">
        <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
          <horstretch>0</horstretch>
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 5px;
+	margin-right: 3px;
+	padding: 5px;
+	image: url(:/menu/eye);
+	
+}</string>
+       </property>
        <property name="text">
-        <string>PushButton</string>
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Zoom_In">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 3px;
+	margin-right: 3px;
+	padding: 5px;
+	image: url(:/menu/zoom_in);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Zoom_Out">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 3px;
+	margin-right: 5px;
+	padding: 5px;
+	image: url(:/menu/zoom_out);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_2">
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Collapse">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 5px;
+	margin-right: 3px;
+	padding: 5px;
+	image: url(:/menu/collapse);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Expand">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 3px;
+	margin-right: 5px;
+	padding: 5px;
+	image: url(:/menu/expand);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_3">
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Outdent">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 5px;
+	margin-right: 3px;
+	padding: 8px;
+	image: url(:/menu/long_arrow_left);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Indent">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 3px;
+	margin-right: 3px;
+	padding: 8px;
+	image: url(:/menu/long_arrow_right);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Move_Up">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 3px;
+	margin-right: 3px;
+	padding: 8px;
+	image: url(:/menu/long_arrow_up);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Move_Down">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 3px;
+	margin-right: 5px;
+	padding: 8px;
+	image: url(:/menu/long_arrow_down);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_4">
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Delete_Selected">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 5px;
+	margin-right: 5px;
+	padding: 8px;
+	image: url(:/menu/delete);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="Line" name="line_5">
+       <property name="frameShadow">
+        <enum>QFrame::Raised</enum>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="toolButton_More">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>50</width>
+         <height>28</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QToolButton {
+	border: 0px;
+	margin-left: 5px;
+}
+
+.QToolButton:focus:pressed { 
+    background-color: #D4D4D4;
+}
+
+.QToolButton:hover {
+     background-color: #F2F2F2;
+}
+
+.QToolButton::menu-indicator {
+    /*image: url(menu_indicator.png);*/
+    subcontrol-origin: padding;
+    subcontrol-position: right;
+}</string>
+       </property>
+       <property name="text">
+        <string>More   </string>
+       </property>
+       <property name="popupMode">
+        <enum>QToolButton::InstantPopup</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_filter">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	padding: 6px;
+	image: url(:/menu/filter);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEdit_Filter">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>150</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QLineEdit {
+	margin-top: 3px;
+	margin-bottom: 3px;
+	border: 1px solid #C2C1C0;
+}</string>
+       </property>
+       <property name="placeholderText">
+        <string>♆</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Setup_Columns">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	margin-left: 3px;
+	margin-right: 3px;
+	padding: 5px;
+	image: url(:/menu/setup_columns);
+}</string>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_Show_Task_Properties_Pane">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QPushButton {
+	image: url(:/menu/triangle_right);
+	margin: 0px;
+	border: 0px;
+	width: 10px;
+}</string>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>
     </layout>
    </item>
   </layout>
+  <action name="action_New_Subtask">
+   <property name="icon">
+    <iconset resource="../../image.qrc">
+     <normaloff>:/menu/new_sub</normaloff>:/menu/new_sub</iconset>
+   </property>
+   <property name="text">
+    <string>New subtask</string>
+   </property>
+  </action>
+  <action name="action_New_Folder">
+   <property name="icon">
+    <iconset resource="../../image.qrc">
+     <normaloff>:/menu/new_folder</normaloff>:/menu/new_folder</iconset>
+   </property>
+   <property name="text">
+    <string>New folder</string>
+   </property>
+  </action>
+  <action name="action_New_Project">
+   <property name="icon">
+    <iconset resource="../../image.qrc">
+     <normaloff>:/menu/new_project</normaloff>:/menu/new_project</iconset>
+   </property>
+   <property name="text">
+    <string>New project</string>
+   </property>
+  </action>
+  <action name="action_New_From_Template">
+   <property name="text">
+    <string>New from template...</string>
+   </property>
+  </action>
+  <action name="action_Workspace_Tabs">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Workspace tabs</string>
+   </property>
+  </action>
+  <action name="action_Toolbar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Toolbar</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
@@ -343,6 +833,8 @@ QPushButton:hover {
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="../../image.qrc"/>
+ </resources>
  <connections/>
 </ui>

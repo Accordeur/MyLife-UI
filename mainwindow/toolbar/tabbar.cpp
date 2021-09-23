@@ -1,6 +1,6 @@
 #include "tabbar.h"
 
-TabBar::TabBar(QWidget *parent)
+TabBar::TabBar(QWidget *parent) : QTabBar(parent)
 {
     setMovable(true);
     setTabsClosable(true);

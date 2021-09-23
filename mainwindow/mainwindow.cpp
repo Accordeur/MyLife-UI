@@ -33,7 +33,6 @@ void MainWindow::setupToolbar() {
     bar->setStyleSheet("QToolBar {background-color: #E7E6E5;}");
     this->addToolBar(bar);
 
-
     this->setContextMenuPolicy(Qt::NoContextMenu);
 
 }
