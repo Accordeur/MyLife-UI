@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QTabBar>
 #include <QLayout>
+#include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
@@ -15,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     setupToolbar();
+    //printChild(this);
 }
 
 MainWindow::~MainWindow()
@@ -30,7 +32,7 @@ void MainWindow::setupToolbar() {
     bar->addWidget(toolbar);
     bar->layout()->setMargin(0);
     bar->layout()->setSpacing(0);
-    bar->setStyleSheet("QToolBar {background-color: #E7E6E5;}");
+    bar->setStyleSheet("QToolBar {background-color:#E7E6E5; margin:0px; padding:0px; border:0px;}");
     this->addToolBar(bar);
 
     this->setContextMenuPolicy(Qt::NoContextMenu);
@@ -58,4 +60,25 @@ void MainWindow::on_action_Exit_triggered()
 void MainWindow::on_action_About_triggered()
 {
     AboutDialog().exec();
+}
+
+void MainWindow::printChild(QObject* root, int blk) {
+    if(root == nullptr) return;
+    QObjectList child = root->children();
+    for(auto& object: child) {
+        for(int i=0;i<blk;i++)
+            std::cout << "  ";
+        QWidget* widget = qobject_cast<QWidget*>(object);
+        std::cout  << "|- " <<object->metaObject()->className() << ": " << object->objectName().toStdString();
+        if(widget) {
+        std::cout << "("
+                   << qobject_cast<QWidget*>(object)->size().width() << ", "
+                   << qobject_cast<QWidget*>(object)->size().height() << ")" << std::endl;
+        } else {
+            std::cout << std::endl;
+        }
+    }
+    for(auto& object: child) {
+        printChild(object, blk+1);
+    }
 }

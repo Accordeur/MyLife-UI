@@ -24,6 +24,7 @@
         <file alias="filter">resource/filter.svg</file>
         <file alias="setup_columns">resource/setup_columns.svg</file>
         <file alias="triangle_right">resource/triangle_right.svg</file>
+        <file alias="add">resource/add.svg</file>
     </qresource>
     <qresource prefix="/logo">
         <file alias="fox">resource/fox.svg</file>

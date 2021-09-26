@@ -15,6 +15,8 @@ public:
     explicit ToolBar(QWidget *parent = nullptr);
     ~ToolBar();
 
+private slots:
+    void setAddTabButtonVisible(bool visible);
 private:
     Ui::ToolBar *ui;
 };

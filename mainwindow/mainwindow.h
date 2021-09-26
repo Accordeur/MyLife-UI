@@ -14,6 +14,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void printChild(QObject* root, int blk = 0);
 
 private slots:
     void on_action_About_Qt_triggered();
@@ -23,6 +24,7 @@ private slots:
 
 private:
     void setupToolbar();
+
     Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H

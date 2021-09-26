@@ -25,7 +25,7 @@
   <property name="maximumSize">
    <size>
     <width>16777212</width>
-    <height>100</height>
+    <height>99</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -65,8 +65,11 @@ QPushButton:hover {
      <property name="spacing">
       <number>0</number>
      </property>
+     <property name="rightMargin">
+      <number>3</number>
+     </property>
      <item>
-      <widget class="TabBar" name="widget" native="true">
+      <widget class="TabBar" name="tabBar" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -79,7 +82,7 @@ QPushButton:hover {
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">.QWidget {
+        <string notr="true">QWidget {
 	margin: 0px;
 	border: 0px;
 	background-color: #D4D4D4;
@@ -88,23 +91,22 @@ QPushButton:hover {
 QTabBar {
 	margin: 0px;
 	border: 0px;
-	qproperty-drawBase: 0;
 }
 
 QTabBar::tab {
+	margin: 0px;
     border-top: 0px;
-	border-left: 0px;
+	border-left: 1px solid #BABAB8;
 	border-right: 1px solid #BABAB8;
 	border-bottom: 1px solid #BABAB8;
 	background-color: #D4D4D4;
-    min-width: 30ex;
+	width: 200px;
+	/*min-width: 100px;*/
 	height: 32px;
-	margin: 0px;
- }
+}
 
 QTabBar::tab:selected {
 	border-top:2px solid #66A800;
-
 	border-left: 0px;
 	border-right: 0px;
 	border-bottom: 0px;
@@ -125,6 +127,7 @@ QTabBar QToolButton::left-arrow {
 	image: url(:/menu/arrow_left);
 }
 QTabBar QToolButton {
+	background-color: #E7E6E5;
 	border:0px;
 }
 
@@ -135,7 +138,12 @@ QTabBar::close-button {
 }
 QTabBar::close-button:hover {
      image: url(:/menu/close_hover)
-} </string>
+} 
+
+
+.QPushButton {font-size: 20px; color: #666666; border:0px; width: 34px; height: 34px;}
+.QPushButton {background-color: #D4D4D4;}
+.QPushButton:hover {background-color: #F2F2F2;}</string>
        </property>
       </widget>
      </item>
@@ -145,7 +153,33 @@ QTabBar::close-button:hover {
         <number>0</number>
        </property>
        <item>
-        <widget class="QPushButton" name="pushButton_sync">
+        <widget class="QPushButton" name="pushButton_Add_Tab">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+	padding-left: 3px; 
+	padding-right: 3px; 
+	margin-right: 15px;
+	width:15px;
+	image: url(:/menu/add);
+}
+</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flat">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_Sync">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -171,7 +205,7 @@ QTabBar::close-button:hover {
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_setting">
+        <widget class="QPushButton" name="pushButton_Setting">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -241,7 +275,7 @@ QTabBar::close-button:hover {
       <number>5</number>
      </property>
      <item>
-      <widget class="QPushButton" name="pushButton_previous">
+      <widget class="QPushButton" name="pushButton_Previous">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -261,7 +295,7 @@ QTabBar::close-button:hover {
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_next">
+      <widget class="QPushButton" name="pushButton_Next">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -304,6 +338,9 @@ QTabBar::close-button:hover {
     <layout class="QHBoxLayout" name="horizontalLayout_4">
      <property name="spacing">
       <number>0</number>
+     </property>
+     <property name="leftMargin">
+      <number>3</number>
      </property>
      <item>
       <widget class="QToolButton" name="toolButton_New_Task">
@@ -374,6 +411,12 @@ QTabBar::close-button:hover {
       <widget class="Line" name="line">
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
        </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -449,6 +492,12 @@ QTabBar::close-button:hover {
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -500,6 +549,12 @@ QTabBar::close-button:hover {
       <widget class="Line" name="line_3">
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
        </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -595,6 +650,12 @@ QTabBar::close-button:hover {
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
        </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
+       </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
@@ -625,6 +686,12 @@ QTabBar::close-button:hover {
       <widget class="Line" name="line_5">
        <property name="frameShadow">
         <enum>QFrame::Raised</enum>
+       </property>
+       <property name="lineWidth">
+        <number>1</number>
+       </property>
+       <property name="midLineWidth">
+        <number>0</number>
        </property>
        <property name="orientation">
         <enum>Qt::Vertical</enum>
@@ -687,7 +754,7 @@ QTabBar::close-button:hover {
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_filter">
+      <widget class="QPushButton" name="pushButton_Filter">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -831,10 +898,68 @@ QTabBar::close-button:hover {
    <extends>QWidget</extends>
    <header>tabbar.h</header>
    <container>1</container>
+   <slots>
+    <signal>tabIsTooLong(bool)</signal>
+    <signal>tabCloseRequested(int)</signal>
+    <slot>addNewTab()</slot>
+    <slot>closeTab(int)</slot>
+   </slots>
   </customwidget>
  </customwidgets>
  <resources>
   <include location="../../image.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>pushButton_Add_Tab</sender>
+   <signal>clicked()</signal>
+   <receiver>tabBar</receiver>
+   <slot>addNewTab()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>987</x>
+     <y>18</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>880</x>
+     <y>17</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tabBar</sender>
+   <signal>tabIsTooLong(bool)</signal>
+   <receiver>ToolBar</receiver>
+   <slot>setAddTabButtonVisible(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>851</x>
+     <y>23</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>846</x>
+     <y>199</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tabBar</sender>
+   <signal>tabCloseRequested(int)</signal>
+   <receiver>tabBar</receiver>
+   <slot>closeTab(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>775</x>
+     <y>9</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>803</x>
+     <y>23</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>setAddTabButtonVisible(bool)</slot>
+ </slots>
 </ui>
