@@ -7,8 +7,12 @@
 *.lai
 *.so
 *.so.*
-*.dll
-*.dylib
+# *.dll
+# *.dylib
+# *.lib
+
+# folder
+/build
 
 # Qt-es
 object_script.*.Release

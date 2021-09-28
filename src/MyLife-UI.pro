@@ -11,6 +11,8 @@ CONFIG += console
 INCLUDEPATH += $$PWD/../include
 LIBS += -L$$PWD/../lib -lcaf_core -lcaf_io -lcaf_openssl
 DESTDIR += $$PWD/../bin
+DEFINES += ENABLE_CAF
+
 
 SOURCES += \
     mainwindow/about_dialog.cpp \
