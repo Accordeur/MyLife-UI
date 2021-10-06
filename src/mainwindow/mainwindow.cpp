@@ -40,7 +40,6 @@ void MainWindow::setupToolbar() {
 
     auto viewDock = new ViewDock(this);
     this->addDockWidget(Qt::LeftDockWidgetArea, viewDock);
-
 }
 
 void MainWindow::on_action_About_Qt_triggered()

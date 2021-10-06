@@ -4,10 +4,8 @@
 #include <thread>
 
 #ifdef ENABLE_CAF
-
 #include "caf/all.hpp"
 #include "caf/io/all.hpp"
-
 #endif
 
 #include "mainwindow/mainwindow.h"
@@ -56,7 +54,6 @@ void hello_world(event_based_actor* self, const actor& buddy) {
                         // ... and print it
                         aout(self) << what << std::endl;
                     });
-    aout(self) << "Fuck" << std::endl;
 }
 
 int caf_main(actor_system& sys, const actor_system_config& cfg) {
@@ -70,7 +67,6 @@ int caf_main(actor_system& sys, const actor_system_config& cfg) {
     auto [argc, argv] = cfg.c_args_remainder();
     return qt_main(argc, argv);
 }
-
 
 // creates a main function for us that calls our caf_main
 CAF_MAIN()

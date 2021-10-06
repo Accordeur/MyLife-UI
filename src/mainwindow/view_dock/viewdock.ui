@@ -6,25 +6,37 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>471</height>
+    <width>300</width>
+    <height>500</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>250</width>
+    <height>500</height>
+   </size>
+  </property>
   <property name="styleSheet">
-   <string notr="true">QWidget {
-	background-color: red;
-	margin: 0px;
-	padding: 0px;
-}</string>
+   <string notr="true"/>
+  </property>
+  <property name="features">
+   <set>QDockWidget::NoDockWidgetFeatures</set>
+  </property>
+  <property name="allowedAreas">
+   <set>Qt::LeftDockWidgetArea</set>
   </property>
   <property name="windowTitle">
    <string>DockWidget</string>
   </property>
   <widget class="QWidget" name="dockWidgetContents">
+   <property name="minimumSize">
+    <size>
+     <width>200</width>
+     <height>0</height>
+    </size>
+   </property>
    <property name="styleSheet">
-    <string notr="true">QWidget {
-	background-color: red;
-}</string>
+    <string notr="true"/>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
     <property name="spacing">
@@ -42,6 +54,57 @@
     <property name="bottomMargin">
      <number>0</number>
     </property>
+    <item>
+     <widget class="QToolBox" name="toolBox">
+      <property name="styleSheet">
+       <string notr="true">QToolBox::tab {
+	background: #D4D4D4;
+	border: 0px;
+	font-size: 16px;
+	font-weight: bold;
+	color: #444444;
+}
+QToolBox::tab:last {
+	border-top:1px solid #BFBFBF;
+}
+QToolBox {
+	icon-size: 20px;
+}</string>
+      </property>
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <property name="tabSpacing">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="View">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>300</width>
+         <height>441</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Views</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="Filter">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>300</width>
+         <height>441</height>
+        </rect>
+       </property>
+       <attribute name="label">
+        <string>Filter</string>
+       </attribute>
+      </widget>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>

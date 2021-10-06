@@ -17,6 +17,9 @@
    <iconset resource="../image.qrc">
     <normaloff>:/logo/fox</normaloff>:/logo/fox</iconset>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget"/>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
