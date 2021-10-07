@@ -1,4 +1,4 @@
-QT       += core gui
+QT += core gui xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,19 +11,35 @@ CONFIG += console
 INCLUDEPATH += $$PWD/../include
 LIBS += -L$$PWD/../lib -lcaf_core -lcaf_io -lcaf_openssl
 DESTDIR += $$PWD/../bin
+
+CONFIG(debug, debug|release) {
+    LIBS += -lgtestd -lgmockd
+    DEFINES += ENABLE_TEST
+}
+
 DEFINES += ENABLE_CAF
 
 
+
 SOURCES += \
+    configure/config.cpp \
+    configure/config_node_interface.cpp \
+    configure/tab_bar_node.cpp \
+    configure/view_tree_node.cpp \
     mainwindow/about_dialog.cpp \
     main.cpp \
     mainwindow/mainwindow.cpp \
     mainwindow/newfile_dialog.cpp \
     mainwindow/toolbar/tabbar.cpp \
     mainwindow/toolbar/toolbar.cpp \
-    mainwindow/view_dock/viewdock.cpp
+    mainwindow/view_dock/viewdock.cpp \
+    test/config_test.cpp
 
 HEADERS += \
+    configure/config.h \
+    configure/config_node_interface.h \
+    configure/tab_bar_node.h \
+    configure/view_tree_node.h \
     mainwindow/about_dialog.h \
     mainwindow/mainwindow.h \
     mainwindow/newfile_dialog.h \

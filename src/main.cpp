@@ -8,10 +8,20 @@
 #include "caf/io/all.hpp"
 #endif
 
+#ifdef ENABLE_TEST
+#include <gtest/gtest.h>
+#endif
+
 #include "mainwindow/mainwindow.h"
 #include <QApplication>
 
 int qt_main(int argc, char* argv[]) {
+
+#ifdef ENABLE_TEST
+    ::testing::InitGoogleTest(&argc, argv);
+    RUN_ALL_TESTS();
+#endif
+
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
 
