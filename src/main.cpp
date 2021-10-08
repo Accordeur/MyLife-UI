@@ -4,18 +4,27 @@
 #include <thread>
 
 #ifdef ENABLE_CAF
-#include "caf/all.hpp"
-#include "caf/io/all.hpp"
+#include <caf/all.hpp>
+#include <caf/io/all.hpp>
 #endif
 
 #ifdef ENABLE_TEST
 #include <gtest/gtest.h>
 #endif
 
+#include <gflags/gflags.h>
+#include <glog/logging.h>
+
 #include "mainwindow/mainwindow.h"
 #include <QApplication>
 
 int qt_main(int argc, char* argv[]) {
+    // init log
+    //gflags::ParseCommandLineFlags(&argc, &argv, true);
+    google::InitGoogleLogging("");
+    FLAGS_logtostderr = 1;
+
+    LOG(ERROR) << "Start MyLife";
 
 #ifdef ENABLE_TEST
     ::testing::InitGoogleTest(&argc, argv);
@@ -24,7 +33,6 @@ int qt_main(int argc, char* argv[]) {
 
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-
 
     QApplication a(argc, argv);
     QFont font;

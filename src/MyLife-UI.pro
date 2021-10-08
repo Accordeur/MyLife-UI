@@ -9,7 +9,7 @@ CONFIG += console
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 INCLUDEPATH += $$PWD/../include
-LIBS += -L$$PWD/../lib -lcaf_core -lcaf_io -lcaf_openssl
+LIBS += -L$$PWD/../lib -lgflags -lglog -lcaf_core -lcaf_io -lcaf_openssl
 DESTDIR += $$PWD/../bin
 
 CONFIG(debug, debug|release) {

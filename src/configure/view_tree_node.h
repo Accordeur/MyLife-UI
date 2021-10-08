@@ -12,6 +12,7 @@ class ViewTreeNode : public ConfigNodeInterface
 public:
     ViewTreeNode(const QDomNode& node);
     virtual bool parse() override;
+     virtual bool updateDom() override;
 };
 
 #endif // VIEWTREENODE_H

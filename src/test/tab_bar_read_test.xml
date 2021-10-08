@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<MyLifeUIConfig ver="1.0">
+	<TabBarTable>
+		<TabBar id = "0" position = "1" pinTab = "true" showView = "true" isDefault = "true" lockDefault = "false">
+			<icon>:/icon/outline</icon>
+			<name>OutLine</name>
+			<currentView>3</currentView>
+			<defaultView>6</defaultView>
+			<hotkey>Ctrl+N</hotkey>
+		</TabBar>
+		<TabBar id = "5" position = "2" pinTab = "false" showView = "false" isDefault = "false" lockDefault = "true">
+			<icon>:/icon/todo</icon>
+			<name>ToDO</name>
+			<currentView>4</currentView>
+			<defaultView>7</defaultView>
+			<hotkey>Ctrl+T</hotkey>
+		</TabBar>
+	</TabBarTable>
+
+	<ViewTree>
+		<View id = "1" position = "1" isFolder="true" hide = "false">
+			<name>To-Do</name>
+			<icon>:/icon/todo</icon>
+			<counters enable = "true" hideIfZero = "ture">
+				<type>Overdue</type>
+				<hierarchy>with subtasks</hierarchy>
+			</counters>
+			<Filter>
+				<show>
+					<actions>Available</actions>
+					<hierarchy>Yes</hierarchy>
+					<complet>
+						<type>Recent</type>
+						<hideOld>3d</hideOld>
+					</complet>
+				</show>
+				<text title = "true" notes = "true" contexts = "false" tag = "false">
+					<string>ABC</string>
+				</text>
+				<contexts includeClosed = "false" operation = "and">
+					<row>@Home</row>
+					<row>@Office</row>
+				</contexts>
+				<flags>
+					<row>red</row>
+					<row>green</row>
+				</flags>
+				<startDate hideUndated = "false">
+					<from type = "functions" >Today-3</from>
+					<to type = "functions" >Today+5</to>
+				</startDate>
+				<advanced>
+					<rule></rule>
+					<rule></rule>
+				</advanced>
+				<groupSort>
+					<group showCount = "true" showName = "true" onlyByDays = "false">
+						<groupBy type = "ascending">Computed-Score</groupBy>
+						<groupBy type = "ascending">Effort</groupBy>
+						<groupBy type = "ascending">Flag</groupBy>
+						<groupBy type = "ascending">Project</groupBy>
+					</group>
+					<sort manual = "false">
+						<sortBy type = "ascending">Computed-Score</sortBy>
+						<sortBy type = "ascending">Effort</sortBy>
+						<sortBy type = "ascending">Flag</sortBy>
+						<sortBy type = "ascending">Project</sortBy>
+					</sort>
+				</groupSort>
+			</Filter>
+		</View>
+	</ViewTree>
+</MyLifeUIConfig>

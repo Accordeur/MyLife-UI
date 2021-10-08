@@ -9,6 +9,7 @@ public:
     ConfigNodeInterface(const ConfigNodeInterface&) = delete;
     ConfigNodeInterface& operator=(const ConfigNodeInterface&) = delete;
     virtual bool parse() = 0;
+    virtual bool updateDom() = 0;
 
     void setValid(bool valid);
     bool isValid() const;
@@ -16,7 +17,7 @@ public:
     virtual ~ConfigNodeInterface(){};
 
 protected:
-    void change();
+    void change(bool flag);
     QDomNode domNode;
 
 private:

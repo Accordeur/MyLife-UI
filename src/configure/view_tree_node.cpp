@@ -7,5 +7,11 @@ ViewTreeNode::ViewTreeNode(const QDomNode &node) : ConfigNodeInterface(node)
 
 bool ViewTreeNode::parse()
 {
-    return false;
+    return true;
+}
+
+bool ViewTreeNode::updateDom()
+{
+    change(false);
+    return true;
 }

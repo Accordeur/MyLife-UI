@@ -1,7 +1,6 @@
 #ifndef TABBARNODE_H
 #define TABBARNODE_H
 #include <QVector>
-#include <QCoreApplication>
 
 #include "config_node_interface.h"
 
@@ -10,7 +9,6 @@
 
 class TabBarNode : public ConfigNodeInterface
 {
-    Q_DECLARE_TR_FUNCTIONS(TabBarNode);
 public:
     struct TabBarTable {
     private:
@@ -43,9 +41,11 @@ public:
 
     TabBarNode(const QDomNode& node);
     virtual bool parse() override;
+    virtual bool updateDom() override;
     bool addTabBarTable(TabBarTable& tab);
-
-
+    bool removeTabBarTable(TabBarTable& tab);
+    bool updateTableBarTable(TabBarTable& tab);
+    QVector<TabBarTable> getConfig() const;
 private:
     int findUnusedID() const;
 

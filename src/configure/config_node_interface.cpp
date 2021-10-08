@@ -5,9 +5,9 @@ ConfigNodeInterface::ConfigNodeInterface(const QDomNode& node) : domNode(node)
 
 }
 
-void ConfigNodeInterface::change()
+void ConfigNodeInterface::change(bool flag)
 {
-    changed = true;
+    changed = flag;
 }
 
 void ConfigNodeInterface::setValid(bool valid)

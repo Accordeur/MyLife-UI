@@ -1,20 +1,16 @@
 #ifndef CONFIG_H
 #define CONFIG_H
-#include <QCoreApplication>
-
 #include <QDomDocument>
-
 
 class TabBarNode;
 class ViewTreeNode;
 
 class Config
 {
-    Q_DECLARE_TR_FUNCTIONS(Config);
 public:
 
-    Config(){};
-    explicit Config(const QString& file);
+    static Config* getConfig();
+    static Config* getConfig(const QString& file);
     Config(const Config&) = delete;
     Config& operator=(const Config&) = delete;
     Config(const Config&&) = delete;
@@ -28,6 +24,8 @@ public:
 
     ~Config();
 private:
+    Config(){};
+    explicit Config(const QString& file);
     bool parseTabBarNode(const QDomElement& root);
     bool parseViewTreeNode(const QDomElement& root);
     bool init();
@@ -38,6 +36,8 @@ private:
     QString configPath;
     TabBarNode* tabBar = nullptr;
     ViewTreeNode* viewTree = nullptr;
+
+    static Config* config;
 };
 
 #endif // CONFIG_H
