@@ -14,6 +14,8 @@ public:
     Config(const Config&) = delete;
     Config& operator=(const Config&) = delete;
     Config(const Config&&) = delete;
+    Config& operator=(const Config&&) = delete;
+
     bool setConfigPath(const QString& file);
     bool parse();
     bool isValid() const;

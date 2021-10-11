@@ -4,15 +4,15 @@
 #include <QFile>
 #include "configure/config.h"
 #include "configure/tab_bar_node.h"
+#include "configure/view_tree_node.h"
+#include <glog/logging.h>
 
-
-TEST(Config, TabBarRead)
-{
+TEST(Config, TabBarRead) {
     Config* config = Config::getConfig("../src/test/tab_bar_read_test.xml");
     EXPECT_EQ(config->isValid(), true);
 
     TabBarNode* node = config->getTabBarNode();
-    auto tableVec = node->getConfig();
+    auto tableVec = node->getTabBarConfig();
     ASSERT_EQ(tableVec.length(), 2);
 
     EXPECT_EQ(tableVec[0].position, 1);
@@ -46,8 +46,7 @@ TEST(Config, TabBarRead)
     EXPECT_EQ(tableVec[1].hotkey, "Ctrl+T");
 }
 
-TEST(Config, TabBarModify)
-{
+TEST(Config, TabBarModify) {
     QFile::remove("../src/test/tab_bar_modify_test.xml");
     QFile::remove("../src/test/tab_bar_modify_test.xml_back");
     QFile::copy("../src/test/tab_bar_read_test.xml", "../src/test/tab_bar_modify_test.xml");
@@ -55,7 +54,7 @@ TEST(Config, TabBarModify)
     EXPECT_EQ(config->isValid(), true);
 
     TabBarNode* node = config->getTabBarNode();
-    auto tableVec = node->getConfig();
+    auto tableVec = node->getTabBarConfig();
     ASSERT_EQ(tableVec.length(), 2);
 
     tableVec[0].position = 4;
@@ -71,7 +70,7 @@ TEST(Config, TabBarModify)
 
     ASSERT_EQ(node->updateTableBarTable(tableVec[0]), true);
 
-    tableVec = node->getConfig();
+    tableVec = node->getTabBarConfig();
     ASSERT_EQ(tableVec.length(), 2);
 
     EXPECT_EQ(tableVec[0].position, 4);
@@ -97,7 +96,7 @@ TEST(Config, TabBarModify)
     table.name = "Life";
     table.hotkey = "Alt+3";
     ASSERT_EQ(node->addTabBarTable(table), true);
-    tableVec = node->getConfig();
+    tableVec = node->getTabBarConfig();
     ASSERT_EQ(tableVec.length(), 3);
     ASSERT_EQ(config->save(), true);
 
@@ -105,11 +104,32 @@ TEST(Config, TabBarModify)
     EXPECT_EQ(config->isValid(), true);
 
     node = config->getTabBarNode();
-    tableVec = node->getConfig();
+    tableVec = node->getTabBarConfig();
     ASSERT_EQ(tableVec.length(), 3);
 
     QFile::remove("../src/test/tab_bar_modify_test.xml");
     QFile::remove("../src/test/tab_bar_modify_test.xml_back");
+}
+
+TEST(Config, ViewTree) {
+    Config* config = Config::getConfig("../src/test/tab_bar_read_test.xml");
+    EXPECT_EQ(config->isValid(), true);
+    ViewTreeNode* node = config->getViewTreeNode();
+    auto tableVec = node->getViewTableConfig();
+    ASSERT_EQ(tableVec.length(), 1);
+
+    EXPECT_EQ(tableVec[0].position, 1);
+    EXPECT_EQ(tableVec[0].isFolder, true);
+    EXPECT_EQ(tableVec[0].hide, false);
+    EXPECT_EQ(tableVec[0].name, "To-Do");
+    EXPECT_EQ(tableVec[0].icon, ":/icon/todo");
+
+
+    ViewTreeNode::ViewTable::Counters countes{true, true, "Overdue", "with subtasks"};
+    EXPECT_EQ(tableVec[0].counters, countes);
+
+
+
 }
 
 #endif

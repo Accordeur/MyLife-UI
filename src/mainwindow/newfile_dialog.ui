@@ -152,11 +152,15 @@
     border: 1px solid #d8d8d8;
     border-radius: 2px;
     background-color: #f4f4f4;
+	padding-right: 12px;
 }
+
 .QToolButton::menu-indicator {
-    /*image: url(menu_indicator.png);*/
-    subcontrol-origin: padding;
-    subcontrol-position: right;
+    subcontrol-position: right center;
+	subcontrol-origin: padding;
+	width: 12px;
+	height: 12px;
+	right: 5px;
 }</string>
          </property>
          <property name="text">
@@ -214,25 +218,36 @@
      border: 1px solid #CCCCCC;
      border-radius: 2px;
      background-color: #3e8ef6;
+	 padding-right: 24px;
  }
 
 .QToolButton::menu-button {
-	background-color: rgb(62, 142, 246);
+	 background-color: rgb(62, 142, 246);
      border: 1px solid #CCCCCC;
      border-top-right-radius: 2px;
      border-bottom-right-radius: 2px;
      /* 16px width + 4px for border = 20px allocated above */
      width: 24px;
- }</string>
+ }
+
+.QToolButton::menu-arrow {
+    subcontrol-position: center;
+	subcontrol-origin: content;
+	width: 12px;
+	height: 12px;
+}</string>
          </property>
          <property name="text">
-          <string>New Blank File   </string>
+          <string>New Blank File</string>
          </property>
          <property name="popupMode">
           <enum>QToolButton::MenuButtonPopup</enum>
          </property>
          <property name="toolButtonStyle">
           <enum>Qt::ToolButtonTextOnly</enum>
+         </property>
+         <property name="arrowType">
+          <enum>Qt::NoArrow</enum>
          </property>
         </widget>
        </item>

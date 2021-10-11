@@ -21,7 +21,7 @@
 		<View id = "1" position = "1" isFolder="true" hide = "false">
 			<name>To-Do</name>
 			<icon>:/icon/todo</icon>
-			<counters enable = "true" hideIfZero = "ture">
+			<counters enable = "true" hideIfZero = "true">
 				<type>Overdue</type>
 				<hierarchy>with subtasks</hierarchy>
 			</counters>
@@ -34,14 +34,14 @@
 						<hideOld>3d</hideOld>
 					</complet>
 				</show>
-				<text title = "true" notes = "true" contexts = "false" tag = "false">
+				<text inTitle = "true" inNotes = "true" inContexts = "false" inTags = "false">
 					<string>ABC</string>
 				</text>
 				<contexts includeClosed = "false" operation = "and">
 					<row>@Home</row>
 					<row>@Office</row>
 				</contexts>
-				<flags>
+				<flags includeClosed = "false" operation = "and">
 					<row>red</row>
 					<row>green</row>
 				</flags>
@@ -50,8 +50,13 @@
 					<to type = "functions" >Today+5</to>
 				</startDate>
 				<advanced>
-					<rule></rule>
-					<rule></rule>
+					<rule field="CompletedDateTime" conditionName="on" dataValue="2021-10-10T23:22:00" dataType="TDateTime" conditionID="410"/>
+					<rule expanded="TRUE" field="FolderName" conditionName="contains" dataValue="watch" dataType="string" conditionID="510">
+						<rule expanded="TRUE" field="OccurrencesLeft" conditionName="=" dataValue="fd" dataType="Integer" conditionID="0">
+							<rule field="Contexts" conditionName="contains (consider open/closed)" dataValue="@HomeCalls;@HomeComputer;@Office" dataType="string" conditionID="1110" linkExpr="OR"/>
+						</rule>
+					</rule>
+					<rule field="Goal" conditionName="=" dataValue="Month" dataType="Integer" conditionID="701"/>
 				</advanced>
 				<groupSort>
 					<group showCount = "true" showName = "true" onlyByDays = "false">

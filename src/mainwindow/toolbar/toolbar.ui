@@ -95,7 +95,7 @@ QTabBar {
 
 QTabBar::tab {
 	margin: 0px;
-    border-top: 0px;
+    border-top: 1px solid #D4D4D4;
 	border-left: 1px solid #BABAB8;
 	border-right: 1px solid #BABAB8;
 	border-bottom: 1px solid #BABAB8;
@@ -357,32 +357,38 @@ QTabBar::close-button:hover {
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">.QToolButton { /* all types of tool button */
+        <string notr="true">.QToolButton { 
 	 color: rgb(255, 255, 255);
      border: 1px solid #CCCCCC;
      border-radius: 2px;
      background-color: #3e8ef6;
  }
+
 .QToolButton:hover { 
      background-color: #5b9df5;
  }
+
 .QToolButton::menu-button {
 	background-color: rgb(62, 142, 246);
-     border: 1px solid #CCCCCC;
-     border-top-right-radius: 2px;
-     border-bottom-right-radius: 2px;
-     /* 16px width + 4px for border = 20px allocated above */
-     width: 22px;
+    border: 1px solid #CCCCCC;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+    width: 22px;
  }
+
 .QToolButton::menu-button:hover { 
      background-color: #5b9df5;
- }</string>
+ }
+</string>
        </property>
        <property name="text">
         <string>New task    </string>
        </property>
        <property name="popupMode">
         <enum>QToolButton::MenuButtonPopup</enum>
+       </property>
+       <property name="arrowType">
+        <enum>Qt::NoArrow</enum>
        </property>
       </widget>
      </item>
@@ -716,6 +722,7 @@ QTabBar::close-button:hover {
         <string notr="true">.QToolButton {
 	border: 0px;
 	margin-left: 5px;
+	padding-right: 10px;
 }
 
 .QToolButton:focus:pressed { 
@@ -727,13 +734,18 @@ QTabBar::close-button:hover {
 }
 
 .QToolButton::menu-indicator {
-    /*image: url(menu_indicator.png);*/
-    subcontrol-origin: padding;
-    subcontrol-position: right;
-}</string>
+
+    subcontrol-position: right center;
+	subcontrol-origin: padding;
+
+	width: 10px;
+	height: 10px;
+}
+
+</string>
        </property>
        <property name="text">
-        <string>More   </string>
+        <string>More</string>
        </property>
        <property name="popupMode">
         <enum>QToolButton::InstantPopup</enum>

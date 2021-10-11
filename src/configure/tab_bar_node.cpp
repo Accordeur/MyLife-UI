@@ -60,7 +60,7 @@ bool TabBarNode::parse()
             node = node.nextSibling();
         }
 
-        config.push_back(table);
+        tabBarVec.push_back(table);
     }
 
     setValid(true);
@@ -69,6 +69,9 @@ bool TabBarNode::parse()
 
 bool TabBarNode::updateDom()
 {
+    if(!hasChanged()) {
+        return true;
+    }
     //删除所有节点
     QDomElement tabBarElement = domNode.toElement();
     QDomNodeList list = tabBarElement.elementsByTagName(TAB_BAR);
@@ -78,7 +81,7 @@ bool TabBarNode::updateDom()
 
     //重新添加
     QDomDocument doc = domNode.ownerDocument();
-    foreach(const auto& c, config) {
+    foreach(const auto& c, tabBarVec) {
         QDomElement element = doc.createElement(TAB_BAR);
         element.setAttribute(TAB_BAR_ID, c.id);
         element.setAttribute(TAB_BAR_POSITION, c.position);
@@ -120,7 +123,7 @@ bool TabBarNode::addTabBarTable(TabBarTable &tab)
         return false;
     }
     tab.id = findUnusedID();
-    config.push_back(tab);
+    tabBarVec.push_back(tab);
     change(true);
     return true;
 }
@@ -131,7 +134,7 @@ bool TabBarNode::removeTabBarTable(TabBarTable &tab)
         LOG(ERROR) << "It is forbidden to delete an ID that does not exist.";
         return false;
     }
-    if(config.removeOne(tab)) {
+    if(tabBarVec.removeOne(tab)) {
         tab.id = -1;
         change(true);
         return true;
@@ -146,18 +149,20 @@ bool TabBarNode::updateTableBarTable(TabBarTable &tab)
         return false;
     }
 
-    auto findIter = std::find(config.begin(), config.end(), tab);
-    if(findIter != config.end()) {
+    auto findIter = std::find(tabBarVec.begin(), tabBarVec.end(), tab);
+    if(findIter != tabBarVec.end()) {
         *findIter = tab;
         change(true);
         return true;
     }
+
+    LOG(ERROR) << "The node to be deleted was not found.";
     return false;
 }
 
-QVector<TabBarNode::TabBarTable> TabBarNode::getConfig() const
+QVector<TabBarNode::TabBarTable> TabBarNode::getTabBarConfig() const
 {
-    return config;
+    return tabBarVec;
 }
 
 int TabBarNode::findUnusedID() const
@@ -166,8 +171,8 @@ int TabBarNode::findUnusedID() const
     while(true) {
         TabBarTable t;
         t.id = result;
-        auto findIter = std::find(config.cbegin(), config.cend(), t);
-        if(findIter == config.cend()) {
+        auto findIter = std::find(tabBarVec.cbegin(), tabBarVec.cend(), t);
+        if(findIter == tabBarVec.cend()) {
             return result;
         }
         result++;

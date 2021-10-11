@@ -31,8 +31,9 @@ int qt_main(int argc, char* argv[]) {
     RUN_ALL_TESTS();
 #endif
 
+#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+#endif
 
     QApplication a(argc, argv);
     QFont font;
