@@ -49,14 +49,14 @@
 					<from type = "functions" >Today-3</from>
 					<to type = "functions" >Today+5</to>
 				</startDate>
-				<advanced>
-					<rule field="CompletedDateTime" conditionName="on" dataValue="2021-10-10T23:22:00" dataType="TDateTime" conditionID="410"/>
-					<rule expanded="TRUE" field="FolderName" conditionName="contains" dataValue="watch" dataType="string" conditionID="510">
-						<rule expanded="TRUE" field="OccurrencesLeft" conditionName="=" dataValue="fd" dataType="Integer" conditionID="0">
-							<rule field="Contexts" conditionName="contains (consider open/closed)" dataValue="@HomeCalls;@HomeComputer;@Office" dataType="string" conditionID="1110" linkExpr="OR"/>
+				<advanced useAdvanced = "true">
+					<rule enable = "false" expanded="false" field="CompletedDateTime" conditionName="on" dataValue="2021-10-10T23:22:00" dataType="TDateTime" conditionID="410" linkExpr="AND"/>
+					<rule enable = "true" expanded="true" field="FolderName" conditionName="contains" dataValue="watch" dataType="string" conditionID="510" linkExpr="AND">
+						<rule enable = "false" expanded="true" field="OccurrencesLeft" conditionName="=" dataValue="fd" dataType="Integer" conditionID="0" linkExpr="AND">
+							<rule enable = "true" expanded="false" field="Contexts" conditionName="contains (consider open/closed)" dataValue="@HomeCalls;@HomeComputer;@Office" dataType="string" conditionID="1110" linkExpr="OR"/>
 						</rule>
 					</rule>
-					<rule field="Goal" conditionName="=" dataValue="Month" dataType="Integer" conditionID="701"/>
+					<rule enable = "false" expanded="false" field="Goal" conditionName="=" dataValue="Month" dataType="Integer" conditionID="701" linkExpr="OR"/>
 				</advanced>
 				<groupSort>
 					<group showCount = "true" showName = "true" onlyByDays = "false">

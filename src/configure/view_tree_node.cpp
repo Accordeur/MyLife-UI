@@ -48,7 +48,9 @@
 #define VIEW_FILTER_START_DATE_TO_TYPE "type"
 
 #define VIEW_FILTER_ADVANCED "advanced"
+#define VIEW_FILTER_ADVANCED_USE_ADVANCED "useAdvanced"
 #define VIEW_FILTER_ADVANCED_RULE "rule"
+#define VIEW_FILTER_ADVANCED_RULE_ENABLE "enable"
 #define VIEW_FILTER_ADVANCED_RULE_FIELD "field"
 #define VIEW_FILTER_ADVANCED_RULE_CONDITION_ID "conditionID"
 #define VIEW_FILTER_ADVANCED_RULE_CONDITION_NAME "conditionName"
@@ -205,7 +207,7 @@ bool ViewTreeNode::parseFilter(const QDomElement &element, ViewTable::Filter &fi
                 return false;
             }
         } else if(e.tagName() == VIEW_FILTER_CONTEXTS) {
-            if(!parseFilterContexts(e, filter.context)) {
+            if(!parseFilterContexts(e, filter.contexts)) {
                 LOG(ERROR) << "Parse Config Error, Tag: " << VIEW_FILTER_CONTEXTS;
                 setValid(false);
                 return false;
@@ -335,7 +337,7 @@ bool ViewTreeNode::parseFilterContexts(const QDomElement &element, ViewTable::Fi
 
     QDomNamedNodeMap attrMap =  element.attributes();
     contexts.includeClose = attrMap.namedItem(VIEW_FILTER_CONTEXTS_INCLUDE_CLOSED).nodeValue() == "true" ? true : false;
-    contexts.operation = attrMap.namedItem(VIEW_FILTER_CONTEXTS_OPERATION).nodeValue() == "true" ? true : false;
+    contexts.operation = attrMap.namedItem(VIEW_FILTER_CONTEXTS_OPERATION).nodeValue();
 
     QDomNode node = element.firstChild();
     while(!node.isNull()) {
@@ -360,7 +362,7 @@ bool ViewTreeNode::parseFilterFlags(const QDomElement &element, ViewTable::Filte
 
     QDomNamedNodeMap attrMap =  element.attributes();
     flags.includeClose = attrMap.namedItem(VIEW_FILTER_FLAGS_INCLUDE_CLOSED).nodeValue() == "true" ? true : false;
-    flags.operation = attrMap.namedItem(VIEW_FILTER_FLAGS_OPERATION).nodeValue() == "true" ? true : false;
+    flags.operation = attrMap.namedItem(VIEW_FILTER_FLAGS_OPERATION).nodeValue();
 
     QDomNode node = element.firstChild();
     while(!node.isNull()) {
@@ -503,21 +505,27 @@ bool ViewTreeNode::parseFilterAdvanced(const QDomElement &element, AdvancedFilte
         setValid(false);
         return false;
     }
-    QDomNode node = element.firstChild();
-    while(!node.isNull()) {
-        QDomElement e = node.toElement();
-        if(e.tagName() == VIEW_FILTER_ADVANCED_RULE) {
-            AdvancedFilter::Rule rule;
-            if(!parseFilterAdvancedRule(e, rule)) {
-                LOG(ERROR) << "Can not parse Node, because the root node must is " << VIEW_FILTER_ADVANCED_RULE;
-                setValid(false);
-                return false;
+
+    QDomNamedNodeMap attrMap =  element.attributes();
+    filter.useAdvFlt = attrMap.namedItem(VIEW_FILTER_ADVANCED_USE_ADVANCED).nodeValue() == "true" ? true : false;
+
+    if(filter.useAdvFlt == true) {
+        QDomNode node = element.firstChild();
+        while(!node.isNull()) {
+            QDomElement e = node.toElement();
+            if(e.tagName() == VIEW_FILTER_ADVANCED_RULE) {
+                AdvancedFilter::Rule rule;
+                if(!parseFilterAdvancedRule(e, rule)) {
+                    LOG(ERROR) << "Can not parse Node, because the root node must is " << VIEW_FILTER_ADVANCED_RULE;
+                    setValid(false);
+                    return false;
+                }
+                filter.rule.push_back(rule);
+            } else {
+                LOG(ERROR) << "UnKnow tag: " << e.tagName().toStdString();
             }
-            filter.rule.push_back(rule);
-        } else {
-            LOG(ERROR) << "UnKnow tag: " << e.tagName().toStdString();
+            node = node.nextSibling();
         }
-        node = node.nextSibling();
     }
 
     return true;
@@ -532,12 +540,14 @@ bool ViewTreeNode::parseFilterAdvancedRule(const QDomElement &element, AdvancedF
     }
 
     QDomNamedNodeMap attrMap =  element.attributes();
+    rule.enable = attrMap.namedItem(VIEW_FILTER_ADVANCED_RULE_ENABLE).nodeValue() == "true" ? true : false;
     rule.field = attrMap.namedItem(VIEW_FILTER_ADVANCED_RULE_FIELD).nodeValue();
     rule.conditionName = attrMap.namedItem(VIEW_FILTER_ADVANCED_RULE_CONDITION_NAME).nodeValue();
     rule.dataValue = attrMap.namedItem(VIEW_FILTER_ADVANCED_RULE_DATA_VALUE).nodeValue();
     rule.dataType = attrMap.namedItem(VIEW_FILTER_ADVANCED_RULE_DATA_TYPE).nodeValue();
     rule.conditionID = attrMap.namedItem(VIEW_FILTER_ADVANCED_RULE_CONDITION_ID).nodeValue();
     rule.expanded = attrMap.namedItem(VIEW_FILTER_ADVANCED_RULE_EXPANDED).nodeValue() == "true" ? true : false;
+    rule.linkExpr = attrMap.namedItem(VIEW_FILTER_ADVANCED_RULE_LINK_EXPR).nodeValue();
 
     if(rule.expanded == true) {
         QDomNode node = element.firstChild();

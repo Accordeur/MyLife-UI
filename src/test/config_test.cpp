@@ -124,11 +124,46 @@ TEST(Config, ViewTree) {
     EXPECT_EQ(tableVec[0].name, "To-Do");
     EXPECT_EQ(tableVec[0].icon, ":/icon/todo");
 
-
     ViewTreeNode::ViewTable::Counters countes{true, true, "Overdue", "with subtasks"};
     EXPECT_EQ(tableVec[0].counters, countes);
 
+    ViewTreeNode::ViewTable::Filter::Show show{"Available", "Yes", {"Recent", "3d"}};
+    EXPECT_EQ(tableVec[0].filter.show, show);
 
+    ViewTreeNode::ViewTable::Filter::Text text{true, true, false, false, "ABC"};
+    EXPECT_EQ(tableVec[0].filter.text, text);
+
+    ViewTreeNode::ViewTable::Filter::Contexts context{false, "and", {"@Home", "@Office"}};
+    EXPECT_EQ(tableVec[0].filter.contexts, context);
+
+    ViewTreeNode::ViewTable::Filter::Flags flag{false, "and", {"red", "green"}};
+    EXPECT_EQ(tableVec[0].filter.flags, flag);
+
+    ViewTreeNode::ViewTable::Filter::StartDate startDate{false, {"functions", "Today-3"}, {"functions", "Today+5"}};
+    EXPECT_EQ(tableVec[0].filter.startDate, startDate);
+
+    ViewTreeNode::ViewTable::Filter::GroupSort groupSort{{true, true, false, {{"ascending", "Computed-Score"},{"ascending", "Effort"},{"ascending", "Flag"},{"ascending", "Project"}}},
+                                                         {false,{{"ascending", "Computed-Score"},{"ascending", "Effort"},{"ascending", "Flag"},{"ascending", "Project"}}}};
+    EXPECT_EQ(tableVec[0].filter.groupSort, groupSort);
+
+
+    ViewTreeNode::AdvancedFilter advFlt{true,
+                                        {
+            {false, false, "CompletedDateTime", "410", "on", "TDateTime", "2021-10-10T23:22:00", "AND", {}},
+            {true, true, "FolderName", "510", "contains", "string", "watch", "AND",
+                {
+                    {false, true, "OccurrencesLeft", "0", "=", "Integer", "fd", "AND",
+                        {
+                            {true, false, "Contexts", "1110", "contains (consider open/closed)", "string", "@HomeCalls;@HomeComputer;@Office", "OR"}
+                        }
+                    }
+                }
+            },
+            {false, false, "Goal", "701", "=", "Integer", "Month", "OR", {}}
+                                        }
+                                       };
+
+    EXPECT_EQ(tableVec[0].filter.advFlt, advFlt);
 
 }
 

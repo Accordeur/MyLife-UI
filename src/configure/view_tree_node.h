@@ -1,7 +1,7 @@
 #ifndef VIEWTREENODE_H
 #define VIEWTREENODE_H
 #include <QCoreApplication>
-
+#include <glog/logging.h>
 #include "config_node_interface.h"
 
 #define VIEW_TREE_NODE "ViewTree"
@@ -84,7 +84,7 @@ public:
                 friend constexpr inline bool operator== (const Contexts&, const Contexts&) noexcept;
                 friend constexpr inline bool operator!= (const Contexts&, const Contexts&) noexcept;
             };
-            Contexts context;
+            Contexts contexts;
             struct Flags {
                 bool includeClose = false;
                 QString operation;
@@ -181,7 +181,7 @@ private:
 inline bool operator== (const ViewTreeNode::AdvancedFilter::Rule& r1, const ViewTreeNode::AdvancedFilter::Rule& r2) noexcept {
     return r1.conditionID == r2.conditionID && r1.conditionName == r2.conditionName && r1.dataType == r2.dataType &&
             r1.dataValue == r2.dataValue && r1.enable == r2.enable && r1.expanded == r2.expanded && r1.field == r2.field &&
-            r1.linkExpr == r2.field && r1.subRule == r2.subRule;
+            r1.linkExpr == r2.linkExpr && r1.subRule == r2.subRule;
 }
 inline bool operator!= (const ViewTreeNode::AdvancedFilter::Rule& r1, const ViewTreeNode::AdvancedFilter::Rule& r2) noexcept {
     return !(r1 == r2);
@@ -220,7 +220,7 @@ inline bool operator!= (const ViewTreeNode::ViewTable::Filter::Show& s1, const V
 
 constexpr inline bool operator== (const ViewTreeNode::ViewTable::Filter::Text& t1, const ViewTreeNode::ViewTable::Filter::Text& t2) noexcept {
     return t1.inContexts == t2.inContexts && t1.inNotes == t2.inNotes &&
-            t1.inTags == t2.inTags && t1.inTitle == t2.inTags && t1.str == t2.str;
+            t1.inTags == t2.inTags && t1.inTitle == t2.inTitle && t1.str == t2.str;
 }
 
 constexpr inline bool operator!= (const ViewTreeNode::ViewTable::Filter::Text& t1, const ViewTreeNode::ViewTable::Filter::Text& t2) noexcept {
@@ -303,7 +303,7 @@ inline bool operator!= (const ViewTreeNode::ViewTable::Filter::GroupSort& s1, co
 }
 
 inline bool operator== (const ViewTreeNode::ViewTable::Filter& f1, const ViewTreeNode::ViewTable::Filter& f2) noexcept {
-    return f1.advFlt == f2.advFlt && f1.context == f2.context && f1.flags == f2.flags && f1.groupSort == f1.groupSort &&
+    return f1.advFlt == f2.advFlt && f1.contexts == f2.contexts && f1.flags == f2.flags && f1.groupSort == f1.groupSort &&
             f1.show == f2.show && f1.startDate == f2.startDate && f1.text == f2.text;
 }
 inline bool operator!= (const ViewTreeNode::ViewTable::Filter& f1, const ViewTreeNode::ViewTable::Filter& f2) noexcept {

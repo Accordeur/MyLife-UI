@@ -9,6 +9,7 @@
 #include <QDebug>
 #include <QTabBar>
 #include <QLayout>
+#include <QMessageBox>
 #include <iostream>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -40,6 +41,11 @@ void MainWindow::setupToolbar() {
 
     auto viewDock = new ViewDock(this);
     this->addDockWidget(Qt::LeftDockWidgetArea, viewDock);
+}
+
+void MainWindow::sorry() const
+{
+    QMessageBox::information(nullptr, tr("Sorry"), tr("Sorry, this feature is not implemented."), QMessageBox::Yes, QMessageBox::Yes);
 }
 
 void MainWindow::on_action_About_Qt_triggered()
@@ -89,3 +95,189 @@ void MainWindow::printChild(QObject* root, int blk) {
         printChild(object, blk+1);
     }
 }
+
+void MainWindow::on_action_Open_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Reopen_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Save_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Save_as_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Close_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Import_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Export_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Archive_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_MyLife_website_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Print_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Print_PockeMod_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Properrties_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Undo_typing_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Redo_typing_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Search_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Text_filter_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Insert_Date_Time_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Insert_Time_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Insert_Date_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Task_views_pane_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Properties_pane_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Toggle_Task_List_Task_Notes_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Workspace_tabs_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Toolbar_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Full_screen_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Reminders_window_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Repid_task_entry_window_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Open_in_new_window_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Zoom_in_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Zoom_out_triggered()
+{
+    sorry();
+}
+
+
+void MainWindow::on_action_Refresh_triggered()
+{
+    sorry();
+}
+

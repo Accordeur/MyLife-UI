@@ -142,7 +142,7 @@
     <property name="title">
      <string>&amp;Help</string>
     </property>
-    <widget class="QMenu" name="menuM_yLife_Online">
+    <widget class="QMenu" name="menu_MyLife_Online">
      <property name="title">
       <string>M&amp;yLife Online</string>
      </property>
@@ -157,7 +157,7 @@
     <addaction name="action_Registration"/>
     <addaction name="action_Support_services"/>
     <addaction name="separator"/>
-    <addaction name="menuM_yLife_Online"/>
+    <addaction name="menu_MyLife_Online"/>
     <addaction name="action_Check_for_updates"/>
     <addaction name="separator"/>
     <addaction name="action_About"/>
