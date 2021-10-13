@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "configure/config.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -88,6 +89,10 @@ private:
     void setupToolbar();
 
     void sorry() const;
+
+
+    Config* config;
     Ui::MainWindow *ui;
+
 };
 #endif // MAINWINDOW_H

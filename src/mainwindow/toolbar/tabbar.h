@@ -2,6 +2,7 @@
 #define TABBAR_H
 
 #include <QTabBar>
+#include "configure/config.h"
 
 class QPushButton;
 
@@ -27,7 +28,9 @@ private slots:
     void closeTab(int index);
 
 private:
-    QPushButton *pushButton_Add_Tag;
+    QPushButton* pushButton_Add_Tag;
+
+    TabBarNode* tabBarConfig = nullptr;
 };
 
 #endif // TABBAR_H

@@ -1,8 +1,10 @@
 #include "tabbar.h"
 #include <QPushButton>
 #include <QDebug>
+#include "configure/config.h"
 
-TabBar::TabBar(QWidget *parent) : QTabBar(parent), pushButton_Add_Tag(new QPushButton("+", this)) {
+TabBar::TabBar(QWidget *parent) : QTabBar(parent),
+    pushButton_Add_Tag(new QPushButton("+", this)), tabBarConfig(Config::getConfig()->getTabBarNode()->getTabBarConfig()) {
     setMovable(true);
     setTabsClosable(true);
     setExpanding(false);
@@ -15,6 +17,9 @@ TabBar::TabBar(QWidget *parent) : QTabBar(parent), pushButton_Add_Tag(new QPushB
 
     QObject::connect(pushButton_Add_Tag, SIGNAL(clicked()), this, SLOT(addNewTab()));
 
+    for(const auto& b : tabBarConfig) {
+        addTab(b.name);
+    }
 }
 
 void TabBar::addNewTab() {

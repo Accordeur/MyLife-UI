@@ -17,8 +17,13 @@ MainWindow::MainWindow(QWidget *parent)
       ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    //初始化用户配置
+    config = Config::getConfig(":/config/default_config");
+    Q_ASSERT(config->isValid());
+
+
     setupToolbar();
-    //printChild(this);
 }
 
 MainWindow::~MainWindow()
@@ -32,7 +37,7 @@ void MainWindow::setupToolbar() {
     bar->setMovable(false);
     ToolBar* toolbar = new ToolBar(bar);
     bar->addWidget(toolbar);
-    //bar->layout()->setMargin(0);
+    bar->layout()->setContentsMargins(0, 0, 0, 0);
     bar->layout()->setSpacing(0);
     bar->setStyleSheet("QToolBar {background-color:#E7E6E5; margin:0px; padding:0px; border:0px;}");
     this->addToolBar(bar);

@@ -1,7 +1,6 @@
 #include <string>
-#include <iostream>
 #include <chrono>
-#include <thread>
+
 
 #ifdef ENABLE_CAF
 #include <caf/all.hpp>
@@ -17,6 +16,7 @@
 
 #include "mainwindow/mainwindow.h"
 #include <QApplication>
+#include <QSettings>
 
 int qt_main(int argc, char* argv[]) {
     // init log
@@ -35,11 +35,24 @@ int qt_main(int argc, char* argv[]) {
     QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
+    QCoreApplication::setOrganizationName("LifePanel");
+    QCoreApplication::setOrganizationDomain("www.MyLife.com");
+    QCoreApplication::setApplicationName("MyLife");
+
+
     QApplication a(argc, argv);
+
+    //设置全局字体，后续移到QSS文件中
     QFont font;
     font.setPointSize(9);
     font.setFamily("Microsoft YaHei UI");
     a.setFont(font);
+
+    //初始化软件启动配置
+    QSettings::setPath(QSettings::IniFormat, QSettings::UserScope, "./");
+    QSettings::setDefaultFormat(QSettings::IniFormat);
+    QSettings settings;
+
 
     MainWindow w;
     w.show();

@@ -29,4 +29,7 @@
     <qresource prefix="/logo">
         <file alias="fox">resource/fox.svg</file>
     </qresource>
+    <qresource prefix="/config">
+        <file alias="default_config">resource/default_config.xml</file>
+    </qresource>
 </RCC>

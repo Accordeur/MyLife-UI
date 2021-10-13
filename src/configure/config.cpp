@@ -111,6 +111,8 @@ Config::~Config()
 
     delete viewTree;
     viewTree = nullptr;
+
+    config = nullptr;
 }
 
 bool Config::parseTabBarNode(const QDomElement &root)
