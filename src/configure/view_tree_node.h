@@ -104,7 +104,7 @@ public:
                 From from;
                 struct To {
                     QString type;
-                    QString fromDate;
+                    QString toDate;
                     friend inline bool operator== (const To&, const To&) noexcept;
                     friend inline bool operator!= (const To&, const To&) noexcept;
                 };
@@ -142,7 +142,7 @@ public:
                     friend constexpr inline bool operator== (const Sort&, const Sort&) noexcept;
                     friend constexpr inline bool operator!= (const Sort&, const Sort&) noexcept;
                 };
-                Sort sortBy;
+                Sort sort;
                 friend inline bool operator== (const GroupSort&, const GroupSort&) noexcept;
                 friend inline bool operator!= (const GroupSort&, const GroupSort&) noexcept;
             };
@@ -158,6 +158,9 @@ public:
     };
 
     QVector<ViewTable> getViewTableConfig() const;
+    bool addViewTable(ViewTable& view);
+    bool removeViewTable(ViewTable& viw);
+    bool updateViewBarTable(ViewTable& view);
 private:
     int findUnusedID() const;
     bool parseCounters(const QDomElement& element, ViewTable::Counters& counters);
@@ -174,6 +177,22 @@ private:
 
     bool parseFilterAdvanced(const QDomElement& element, AdvancedFilter& filter);
     bool parseFilterAdvancedRule(const QDomElement& element, AdvancedFilter::Rule& rule);
+
+
+    bool updateCountersDom(QDomElement& element, const ViewTable::Counters& counters);
+    bool updateFilterDom(QDomElement& element, const ViewTable::Filter& filter);
+    bool updateFilterShowDom(QDomElement& element, const ViewTable::Filter::Show& show);
+    bool updateFilterShowCompletDom( QDomElement& element, const ViewTable::Filter::Show::Complet& complet);
+    bool updateFilterTextDom( QDomElement& element, const ViewTable::Filter::Text& text);
+    bool updateFilterContextsDom( QDomElement& element, const ViewTable::Filter::Contexts& contexts);
+    bool updateFilterFlagsDom( QDomElement& element, const ViewTable::Filter::Flags& flags);
+    bool updateFilterStartDateDom( QDomElement& element, const ViewTable::Filter::StartDate& startDate);
+    bool updateFilterGroupSortDom( QDomElement& element, const ViewTable::Filter::GroupSort & groupSort);
+    bool updateFilterGroupSortGroupDom( QDomElement& element, const ViewTable::Filter::GroupSort::Group & group);
+    bool updateFilterGroupSortSortDom( QDomElement& element, const ViewTable::Filter::GroupSort::Sort & sort);
+
+    bool updateFilterAdvancedDom(QDomElement& element, const AdvancedFilter& filter);
+    bool updateFilterAdvancedRuleDom(QDomElement& element, const AdvancedFilter::Rule& rule);
 
     QVector<ViewTable> viewTableVec;
 };
@@ -249,7 +268,7 @@ inline bool operator!= (const ViewTreeNode::ViewTable::Filter::StartDate::From& 
 }
 
 inline bool operator== (const ViewTreeNode::ViewTable::Filter::StartDate::To& t1, const ViewTreeNode::ViewTable::Filter::StartDate::To& t2) noexcept {
-    return t1.fromDate == t2.fromDate && t1.type == t2.type;
+    return t1.toDate == t2.toDate && t1.type == t2.type;
 }
 inline bool operator!= (const ViewTreeNode::ViewTable::Filter::StartDate::To& t1, const ViewTreeNode::ViewTable::Filter::StartDate::To& t2) noexcept {
     return !(t1 == t2);
@@ -295,7 +314,7 @@ constexpr inline bool operator!= (const ViewTreeNode::ViewTable::Filter::GroupSo
 }
 
 inline bool operator== (const ViewTreeNode::ViewTable::Filter::GroupSort& s1, const ViewTreeNode::ViewTable::Filter::GroupSort& s2) noexcept {
-    return s1.group == s2.group && s1.sortBy == s2.sortBy;
+    return s1.group == s2.group && s1.sort == s2.sort;
 }
 
 inline bool operator!= (const ViewTreeNode::ViewTable::Filter::GroupSort& s1, const ViewTreeNode::ViewTable::Filter::GroupSort& s2) noexcept {

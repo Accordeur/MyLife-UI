@@ -85,10 +85,10 @@ bool TabBarNode::updateDom()
         QDomElement element = doc.createElement(TAB_BAR);
         element.setAttribute(TAB_BAR_ID, c.id);
         element.setAttribute(TAB_BAR_POSITION, c.position);
-        element.setAttribute(TAB_BAR_PIN_TAB, c.pinTab);
-        element.setAttribute(TAB_BAR_SHOW_VIEW, c.showView);
-        element.setAttribute(TAB_BAR_IS_DEFAULT, c.isDefault);
-        element.setAttribute(TAB_BAR_LOCK_DEFAULT, c.lockDefault);
+        element.setAttribute(TAB_BAR_PIN_TAB, c.pinTab ? "true" : "false");
+        element.setAttribute(TAB_BAR_SHOW_VIEW, c.showView ? "true" : "false");
+        element.setAttribute(TAB_BAR_IS_DEFAULT, c.isDefault ? "true" : "false");
+        element.setAttribute(TAB_BAR_LOCK_DEFAULT, c.lockDefault ? "true" : "false");
 
         QDomElement icon = doc.createElement(TAB_BAR_ICON);
         icon.appendChild(doc.createTextNode(c.iconPath));

@@ -70,8 +70,9 @@ TEST(Config, TabBarModify) {
 
     ASSERT_EQ(node->updateTableBarTable(tableVec[0]), true);
 
-    tableVec = node->getTabBarConfig();
+    auto tableVec1 = node->getTabBarConfig();
     ASSERT_EQ(tableVec.length(), 2);
+    ASSERT_EQ(tableVec, tableVec1);
 
     EXPECT_EQ(tableVec[0].position, 4);
     EXPECT_EQ(tableVec[0].pinTab, false);
@@ -96,8 +97,8 @@ TEST(Config, TabBarModify) {
     table.name = "Life";
     table.hotkey = "Alt+3";
     ASSERT_EQ(node->addTabBarTable(table), true);
-    tableVec = node->getTabBarConfig();
-    ASSERT_EQ(tableVec.length(), 3);
+    auto tableVec2 = node->getTabBarConfig();
+    ASSERT_EQ(tableVec2.length(), 3);
     ASSERT_EQ(config->save(), true);
 
     config = Config::getConfig("../src/test/tab_bar_modify_test.xml");
@@ -106,6 +107,8 @@ TEST(Config, TabBarModify) {
     node = config->getTabBarNode();
     tableVec = node->getTabBarConfig();
     ASSERT_EQ(tableVec.length(), 3);
+
+    ASSERT_EQ(tableVec, tableVec2);
 
     QFile::remove("../src/test/tab_bar_modify_test.xml");
     QFile::remove("../src/test/tab_bar_modify_test.xml_back");
@@ -164,7 +167,70 @@ TEST(Config, ViewTree) {
                                        };
 
     EXPECT_EQ(tableVec[0].filter.advFlt, advFlt);
+}
 
+TEST(Config, ViewTreeModify) {
+    QFile::remove("../src/test/tab_bar_modify_test.xml");
+    QFile::remove("../src/test/tab_bar_modify_test.xml_back");
+    QFile::copy("../src/test/tab_bar_read_test.xml", "../src/test/tab_bar_modify_test.xml");
+    Config* config = Config::getConfig("../src/test/tab_bar_modify_test.xml");
+    EXPECT_EQ(config->isValid(), true);
+
+    ViewTreeNode* node = config->getViewTreeNode();
+    auto tableVec = node->getViewTableConfig();
+    ASSERT_EQ(tableVec.length(), 1);
+
+    tableVec[0].position++;
+    tableVec[0].isFolder = !tableVec[0].isFolder;
+    tableVec[0].hide = !tableVec[0].hide;
+    tableVec[0].name = "Do-To";
+    tableVec[0].icon = ":/IcOn/ToDo";
+
+    tableVec[0].counters = {true, true, "OvErDuE", "WiTh subtasks"};
+    tableVec[0].filter.show = {"AvAiLaBlE", "YeS", {"ReCeNt", "3D"}};
+    tableVec[0].filter.text = {true, true, false, false, "AbC"};
+    tableVec[0].filter.contexts = {false, "aNd", {"@HoMe", "@OfFiEe"}};
+    tableVec[0].filter.flags = {false, "aNd", {"ReD", "GrEeN"}};
+    tableVec[0].filter.startDate = {false, {"FuNcTiOnS", "ToDaY-3"}, {"FuNcTiOnS", "ToDaY+5"}};
+
+    tableVec[0].filter.groupSort = {{true, true, false, {{"AsCeNdInG", "CoMpUtEd-ScOrE"},{"asceNding", "EffOrt"},{"asCending", "FLag"},{"ascenDing", "ProJect"}}},
+                                    {false,{{"ascendIng", "CompuTed-Score"},{"ascendIng", "EffOrt"},{"ascendIng", "FlaG"},{"ascendinG", "ProjeCt"}}}};
+
+    tableVec[0].filter.advFlt = {true,
+                                 {
+     {false, false, "CompLetedDateTime", "414", "on", "TDateTime", "2021-10-10T23:22:00", "AND", {}},
+     {true, true, "FolderName", "514", "contains", "string", "watch", "AND",
+         {
+             {false, true, "OccurrencesLeft", "4", "=", "Integer", "fd", "AND",
+                 {
+                     {true, false, "Contexts", "1114", "contains (consider open/closed)", "string", "@HomeCalls;@HomeComputer;@Office", "OR"}
+                 }
+             }
+         }
+     },
+     {false, false, "Goal", "704", "=", "Integer", "Month", "OR", {}}
+                                 }
+                                };
+
+    ASSERT_EQ(node->updateViewBarTable(tableVec[0]), true);
+
+    auto tableVec1 = node->getViewTableConfig();
+    ASSERT_EQ(tableVec, tableVec1);
+    ASSERT_EQ(tableVec.length(), 1);
+
+    ASSERT_EQ(config->save(), true);
+
+    config = Config::getConfig("../src/test/tab_bar_modify_test.xml");
+    EXPECT_EQ(config->isValid(), true);
+
+    node = config->getViewTreeNode();
+    tableVec = node->getViewTableConfig();
+    ASSERT_EQ(tableVec.length(), 1);
+
+    ASSERT_EQ(tableVec, tableVec1);
+
+    QFile::remove("../src/test/tab_bar_modify_test.xml");
+    QFile::remove("../src/test/tab_bar_modify_test.xml_back");
 }
 
 #endif
