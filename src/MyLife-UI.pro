@@ -30,6 +30,7 @@ SOURCES += \
     main.cpp \
     mainwindow/mainwindow.cpp \
     mainwindow/newfile_dialog.cpp \
+    mainwindow/toolbar/setup_workspace.cpp \
     mainwindow/toolbar/tabbar.cpp \
     mainwindow/toolbar/toolbar.cpp \
     mainwindow/view_dock/viewdock.cpp \
@@ -43,6 +44,7 @@ HEADERS += \
     mainwindow/about_dialog.h \
     mainwindow/mainwindow.h \
     mainwindow/newfile_dialog.h \
+    mainwindow/toolbar/setup_workspace.h \
     mainwindow/toolbar/tabbar.h \
     mainwindow/toolbar/toolbar.h \
     mainwindow/view_dock/viewdock.h
@@ -51,6 +53,7 @@ FORMS += \
     mainwindow/about_dialog.ui \
     mainwindow/mainwindow.ui \
     mainwindow/newfile_dialog.ui \
+    mainwindow/toolbar/setup_workspace.ui \
     mainwindow/toolbar/toolbar.ui \
     mainwindow/view_dock/viewdock.ui
 

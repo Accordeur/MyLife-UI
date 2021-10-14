@@ -2,9 +2,11 @@
 #define TABBAR_H
 
 #include <QTabBar>
-#include "configure/config.h"
+#include "configure/tab_bar_node.h"
 
+class SetUpWorkspace;
 class QPushButton;
+class QMenu;
 
 class TabBar : public QTabBar
 {
@@ -14,9 +16,8 @@ public:
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;
-
-private:
-    void paintAddTagButton();
+    virtual void mouseDoubleClickEvent(QMouseEvent *event) override;
+    virtual void contextMenuEvent(QContextMenuEvent *event) override;
 
 signals:
     void tabIsTooLong(bool flag = false);
@@ -28,9 +29,14 @@ private slots:
     void closeTab(int index);
 
 private:
-    QPushButton* pushButton_Add_Tag;
+    void setupMenu();
+    void paintAddTagButton();
+    void showSetupWorkspace();
 
-    TabBarNode* tabBarConfig = nullptr;
+    QPushButton* pushButton_Add_Tag;
+    SetUpWorkspace* setupWorkspace;
+    QMenu* menu;
+    QVector<TabBarNode::TabBarTable> tabBarConfig;
 };
 
 #endif // TABBAR_H
