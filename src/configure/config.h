@@ -4,6 +4,8 @@
 
 class TabBarNode;
 class ViewTreeNode;
+class ConfigNodeInterface;
+
 
 class Config
 {
@@ -36,8 +38,8 @@ private:
     bool valid = false;
     QDomDocument doc;
     QString configPath;
-    TabBarNode* tabBar = nullptr;
-    ViewTreeNode* viewTree = nullptr;
+    ConfigNodeInterface* tabBar = nullptr;
+    ConfigNodeInterface* viewTree = nullptr;
 
     static Config* config;
 };

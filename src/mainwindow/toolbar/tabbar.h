@@ -13,6 +13,7 @@ class TabBar : public QTabBar
     Q_OBJECT
 public:
     TabBar(QWidget *parent = nullptr);
+    void saveConfig();
 
 protected:
     virtual void paintEvent(QPaintEvent *event) override;
@@ -25,13 +26,16 @@ signals:
 public slots:
     void addNewTab();
 
+
 private slots:
     void closeTab(int index);
+    void showSetupWorkspace();
+    void onTabMoved(int form, int to);
 
 private:
     void setupMenu();
     void paintAddTagButton();
-    void showSetupWorkspace();
+
 
     QPushButton* pushButton_Add_Tag;
     SetUpWorkspace* setupWorkspace;

@@ -10,8 +10,6 @@ class ViewTreeNode : public ConfigNodeInterface
 {
 public:
     ViewTreeNode(const QDomNode& node);
-    virtual bool parse() override;
-    virtual bool updateDom() override;
 
     struct AdvancedFilter {
         bool useAdvFlt = false;
@@ -161,6 +159,10 @@ public:
     bool addViewTable(ViewTable& view);
     bool removeViewTable(ViewTable& viw);
     bool updateViewBarTable(ViewTable& view);
+
+protected:
+    virtual bool parse() override;
+    virtual bool updateDom() override;
 private:
     int findUnusedID() const;
     bool parseCounters(const QDomElement& element, ViewTable::Counters& counters);

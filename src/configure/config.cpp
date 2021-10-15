@@ -96,12 +96,12 @@ bool Config::save()
 
 TabBarNode *Config::getTabBarNode()
 {
-    return tabBar;
+    return reinterpret_cast<TabBarNode*>(tabBar);
 }
 
 ViewTreeNode *Config::getViewTreeNode()
 {
-    return viewTree;
+    return reinterpret_cast<ViewTreeNode*>(viewTree);
 }
 
 Config::~Config()

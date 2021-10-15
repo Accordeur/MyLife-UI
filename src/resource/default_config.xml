@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <MyLifeUIConfig ver="1.0">
         <TabBarTable>
-                <TabBar id = "0" position = "1" pinTab = "true" showView = "true" isDefault = "true" lockDefault = "false">
+                <TabBar id = "0" position = "1" pinTab = "true" showView = "true" isDefault = "true" lockDefault = "false" showCounter = "true" syncSelection = "true" syncZoom = "true">
                         <icon>:/icon/outline</icon>
                         <name>Outline</name>
                         <currentView>3</currentView>
                         <defaultView>6</defaultView>
                         <hotkey>Ctrl+N</hotkey>
                 </TabBar>
-                <TabBar id = "5" position = "2" pinTab = "false" showView = "false" isDefault = "false" lockDefault = "true">
+                <TabBar id = "5" position = "2" pinTab = "false" showView = "false" isDefault = "false" lockDefault = "true" showCounter = "true" syncSelection = "true" syncZoom = "true">
                         <icon>:/icon/todo</icon>
                         <name>To-Do</name>
                         <currentView>4</currentView>

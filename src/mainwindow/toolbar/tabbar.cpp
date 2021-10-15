@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QMenu>
 #include <QContextMenuEvent>
+#include <glog/logging.h>
 #include "configure/config.h"
 #include "setup_workspace.h"
 
@@ -20,19 +21,31 @@ TabBar::TabBar(QWidget *parent) : QTabBar(parent),
     setupMenu();
 
     QObject::connect(pushButton_Add_Tag, SIGNAL(clicked()), this, SLOT(addNewTab()));
+    QObject::connect(this, SIGNAL(tabMoved(int,int)), this, SLOT(onTabMoved(int,int)));
 
-    for(const auto& b : tabBarConfig) {
+    for(const auto& b : qAsConst(tabBarConfig)) {
         addTab(b.name);
     }
 }
 
+void TabBar::saveConfig() {
+    for(int i = 0; i < tabBarConfig.length(); i++) {
+        tabBarConfig[i].position = i;
+    }
+    Config::getConfig()->getTabBarNode()->updateTableBarTable(tabBarConfig);
+}
+
 void TabBar::addNewTab() {
     int index = addTab("(1)New Workspace");
+
     setCurrentIndex(index);
+    TabBarNode::TabBarTable b;
+    b.name = tabText(index);
+    tabBarConfig.push_back(b);
 }
 
 void TabBar::closeTab(int index) {
-
+    tabBarConfig.removeAt(index);
     removeTab(index);
 }
 
@@ -83,6 +96,8 @@ void TabBar::setupMenu()
     menu->addMenu(assignIcon);
     menu->addSeparator();
     menu->addAction(setupWorkspace);
+
+    connect(setupWorkspace, SIGNAL(triggered()), this, SLOT(showSetupWorkspace()));
 }
 
 void TabBar::paintEvent(QPaintEvent *event) {
@@ -92,6 +107,7 @@ void TabBar::paintEvent(QPaintEvent *event) {
 
 void TabBar::mouseDoubleClickEvent(QMouseEvent *event)
 {
+
     showSetupWorkspace();
     return QTabBar::mouseDoubleClickEvent(event);
 }
@@ -124,6 +140,11 @@ void TabBar::paintAddTagButton() {
 }
 
 void TabBar::showSetupWorkspace() {
+    setupWorkspace->setdata(tabBarConfig[currentIndex()].name,
+            tabBarConfig[currentIndex()].showCounter,
+            tabBarConfig[currentIndex()].syncSelection,
+            tabBarConfig[currentIndex()].syncZoom);
+
     QRect rect = tabRect(currentIndex());
     QPoint globalPoint = mapToGlobal(QPoint(rect.x(), rect.y()));
 
@@ -132,4 +153,9 @@ void TabBar::showSetupWorkspace() {
     QPoint showPoint = QPoint(centerPoint.x() - setupWorkspace->width()/2, centerPoint.y());
     setupWorkspace->move(showPoint);
     setupWorkspace->show();
+}
+
+void TabBar::onTabMoved(int form, int to)
+{
+    tabBarConfig.swapItemsAt(form, to);
 }

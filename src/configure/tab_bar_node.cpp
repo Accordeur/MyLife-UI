@@ -9,6 +9,9 @@
 #define TAB_BAR_SHOW_VIEW "showView"
 #define TAB_BAR_IS_DEFAULT "isDefault"
 #define TAB_BAR_LOCK_DEFAULT "lockDefault"
+#define TAB_BAR_SHOW_COUNTER "showCounter"
+#define TAB_BAR_SYNC_SELECTION "syncSelection"
+#define TAB_BAR_SYNC_ZOOM "syncZoom"
 #define TAB_BAR_ICON "icon"
 #define TAB_BAR_NAME "name"
 #define TAB_BAR_CURRENT_VIEW "currentView"
@@ -40,6 +43,9 @@ bool TabBarNode::parse()
         table.showView = attrMap.namedItem(TAB_BAR_SHOW_VIEW).nodeValue() == "true" ? true : false;
         table.isDefault = attrMap.namedItem(TAB_BAR_IS_DEFAULT).nodeValue() == "true" ? true : false;
         table.lockDefault = attrMap.namedItem(TAB_BAR_LOCK_DEFAULT).nodeValue() == "true" ? true : false;
+        table.showCounter = attrMap.namedItem(TAB_BAR_SHOW_COUNTER).nodeValue() == "true" ? true : false;
+        table.syncSelection = attrMap.namedItem(TAB_BAR_SYNC_SELECTION).nodeValue() == "true" ? true : false;
+        table.syncZoom = attrMap.namedItem(TAB_BAR_SYNC_ZOOM).nodeValue() == "true" ? true : false;
 
         QDomNode node = tab.firstChild();
         while(!node.isNull()) {
@@ -89,6 +95,9 @@ bool TabBarNode::updateDom()
         element.setAttribute(TAB_BAR_SHOW_VIEW, c.showView ? "true" : "false");
         element.setAttribute(TAB_BAR_IS_DEFAULT, c.isDefault ? "true" : "false");
         element.setAttribute(TAB_BAR_LOCK_DEFAULT, c.lockDefault ? "true" : "false");
+        element.setAttribute(TAB_BAR_SHOW_COUNTER, c.showCounter ? "true" : "false");
+        element.setAttribute(TAB_BAR_SYNC_SELECTION, c.syncSelection ? "true" : "false");
+        element.setAttribute(TAB_BAR_SYNC_ZOOM, c.syncZoom ? "true" : "false");
 
         QDomElement icon = doc.createElement(TAB_BAR_ICON);
         icon.appendChild(doc.createTextNode(c.iconPath));
@@ -142,6 +151,24 @@ bool TabBarNode::removeTabBarTable(TabBarTable &tab)
     return false;
 }
 
+bool TabBarNode::updateTableBarTable(QVector<TabBarTable> &tabVec)
+{
+    if(tabVec == tabBarVec) {
+        return true;
+    }
+
+    tabBarVec.clear();
+
+    for(auto& t : tabVec) {
+        if(t.id == -1) {
+            addTabBarTable(t);
+        }else {
+            updateTableBarTable(t);
+        }
+    }
+    return true;
+}
+
 bool TabBarNode::updateTableBarTable(TabBarTable &tab)
 {
     if(tab.id == -1) {
@@ -156,8 +183,8 @@ bool TabBarNode::updateTableBarTable(TabBarTable &tab)
         return true;
     }
 
-    LOG(ERROR) << "The node to be deleted was not found.";
-    return false;
+    tabBarVec.push_back(tab);
+    return true;
 }
 
 QVector<TabBarNode::TabBarTable> TabBarNode::getTabBarConfig() const
